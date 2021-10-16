@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductCategory extends Model
 {
-    use HasFactory;
+    protected $table = 'product_category';
+
+    protected $guarded = [
+        'id'
+    ];
+
+    public function user(){
+        return $this->hasMany(User::class);
+    }
+
+    public function jobs(){
+        return $this->hasMany(Job::class, 'product_category_id', 'id');
+    }
 }

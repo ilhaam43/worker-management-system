@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model
 {
     use HasFactory;
+
+    protected $table = 'admins';
+
+    protected $guarded = [
+        'id'
+    ];
+
+    public function user() 
+    { 
+        return $this->morphOne(User::class, 'userable');
+    }
 }

@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
+
+    protected $table = 'country';
+
+    protected $guarded = [
+        'id'
+    ];
+
+    public function users(){
+        return $this->hasMany(User::class, 'id', 'country_id');
+    }
+
+    public function jobs(){
+        return $this->hasMany(Job::class, 'id', 'country_id');
+    }
 }

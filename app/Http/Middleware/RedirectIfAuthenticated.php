@@ -22,8 +22,12 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+            if (Auth::guard($guard)->check() && Auth::user()->userable_type == 'App\Models\SuperAdmin') {
+                return redirect('/superadmin');
+            }else if(Auth::guard($guard)->check() && Auth::user()->userable_type == 'App\Models\Admin') {
+                return redirect('/admin');
+            }else if(Auth::guard($guard)->check() && Auth::user()->userable_type == 'App\Models\Worker') {
+                return redirect('/worker');
             }
         }
 

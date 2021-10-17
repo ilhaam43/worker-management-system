@@ -5,8 +5,8 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Services\SuperAdmin\ProductCategoryService;
-use App\Http\Requests\SuperAdmin\ProductCategoryRequest;
+use App\Services\ProductCategoryService;
+use App\Http\Requests\ProductCategoryRequest;
 use App\Models\User;
 use App\Models\ProductCategory;
 

@@ -16,7 +16,6 @@ function deleteConfirmation(id) {
                     data: {_token: CSRF_TOKEN, _method: 'DELETE'},
                     dataType: 'JSON',
                     success: function (results) {
-                        console.log(results);
                         if (results.success === true) {
                             swal("Done!", results.message, "success");
                             window.setTimeout(function(){ 

@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\SuperAdmin;
+namespace App\Services;
 
 use App\Models\ProductCategory;
 

@@ -44,4 +44,24 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+    
+    public function userStatus(){
+        return $this->belongsTo(UserStatus::class, 'status_id', 'id');
+    }
+
+    public function jobs(){
+        return $this->hasMany(Job::class, 'user_id', 'id');
+    }
+
+    public function productCategory(){
+        return $this->belongsTo(ProductCategory::class);
+    }
+
+    public function country(){
+        return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
+
+    public function workerNotifications(){
+        return $this->hasMany(WorkerNotification::class, 'user_id', 'id');
+    }
 }

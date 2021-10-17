@@ -24,13 +24,8 @@ Auth::routes();
 
 Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Http\Controllers\SuperAdmin','middleware'=>['auth','superadmin']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
-
-    Route::group(['prefix' => 'product-category'], function () {
-        Route::get('/', [SuperAdminController::class, 'showProductCategory'])->name('product_category');
-        Route::get('/{id}', [SuperAdminController::class, 'showDetailProductCategory'])->name('product_category.detail');
-        Route::post('/', [SuperAdminController::class, 'addProductCategory'])->name('product_category.store');
-        Route::put('/{id}', [SuperAdminController::class, 'updateProductCategory'])->name('product_category.update');
-        Route::delete('/{id}', [SuperAdminController::class, 'deleteProductCategory'])->name('product_category.destroy');
-    });
+    //product category all route
+    Route::resource('product-category', 'ProductCategoryController');
+    
 });
 

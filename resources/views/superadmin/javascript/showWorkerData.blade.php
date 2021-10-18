@@ -5,7 +5,7 @@
         $('#dataTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{route('data.admin')}}",
+            ajax: "{{route('data.worker')}}",
             "lengthMenu": [ 10, 20, 30, 50 ],
             columns: [
                 { data: 'checkbox', 
@@ -23,6 +23,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
                 { data: 'country.country_name', name: 'Country.country_name' },
+                { data: 'worker_quantity', name: 'worker_quantity'},
                 { data: 'category', name: 'category' },
 
                 { data: 'status', name: 'status'},

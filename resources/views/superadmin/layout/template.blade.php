@@ -65,21 +65,16 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-users"></i>
-          <span>Admin & Workers</span>
+          <span>Admin & Worker</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Users menu :</h6>
-            <a class="collapse-item" href="/superadmin/users">All Users</a>
-            <div class="collapse-divider"></div>
             <h6 class="collapse-header">Admin Menu :</h6>
             <a class="collapse-item" href="/superadmin/admins/create">Create New Admin</a>
             <a class="collapse-item" href="/superadmin/admins">Admin List</a>
-            <h6 class="collapse-header">Workers Menu :</h6>
-            <a class="collapse-item" href="/superadmin/workers/create">Create New Workers</a>
-            <a class="collapse-item" href="/superadmin/workers/researcher">Researcher List</a>
-            <a class="collapse-item" href="/superadmin/workers/inqurier">Inqurier List</a>
-            <a class="collapse-item" href="/superadmin/workers/auditor">Auditor List</a>
+            <h6 class="collapse-header">Worker Menu :</h6>
+            <a class="collapse-item" href="/superadmin/workers/create">Create New Worker</a>
+            <a class="collapse-item" href="/superadmin/workers">Worker List</a>
           </div>
         </div>
       </li>

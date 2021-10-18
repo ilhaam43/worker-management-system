@@ -6,7 +6,7 @@
         <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Edit Admin User</h1>
+    <h1 class="h3 mb-2 text-gray-800">Add Workers User</h1>
     
     </br>
     @if (session('error'))
@@ -26,62 +26,55 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Edit Admin User</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Add Worker User</h6>
         </div>
         <div class="card-body">
-        <form method="POST" action="{{ route('superadmin.admins.update',$admin->id) }}">
+        <form method="POST" action="{{ route('superadmin.workers.store') }}">
             @csrf
-            @method('PUT')
+            <input type="hidden" name="role_id" value="2">
+            <input type="hidden" name="status_id" value="1">
             <div class="form-row">
                 <div class="col-sm-6">
                 <label for="name"><b>Name :</label></b>
-                <input type="text" class="form-control" placeholder="Name" name="name" value="{{$admin->name}}" required>
+                <input type="text" class="form-control" placeholder="Name" name="name" required>
                 </div>
                 <div class="col-sm-6">
-                <label for="name"><b>Email :</label></b>
-                <input type="text" class="form-control" placeholder="Email" name="email" value="{{$admin->email}}" required>
+                <label for="email"><b>Email :</label></b>
+                <input type="text" class="form-control" placeholder="Email" name="email" required>
                 </div>
             </div>
             </br>
             <div class="form-row">
                 <div class="col-sm-6">
-                <label for="name"><b>Pasword :</label></b>
-                <input type="password" class="form-control" placeholder="Password" name="password">
+                <label for="password"><b>Pasword :</label></b>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
                 </div>
                 <div class="col-sm-6">
-                <label for="name"><b>Confirm Password :</label></b>
-                <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password">
+                <label for="confirm_password"><b>Confirm Password :</label></b>
+                <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" required>
                 </div>
             </div>
             </br>
             <div class="form-row">
-            <div class="col-sm-4">
-                <label for="name"><b>Country :</label></b>
+            <div class="col-sm-6">
+                <label for="country"><b>Country :</label></b>
                 <select class="form-control" name="country_id">
                     @foreach($listCountries as $countries)
-                    <option value="{{$countries->id}}" {{ ( $countries->id == $admin->country_id) ? 'selected' : '' }}>{{$countries->country_name}}</option>
+                    <option value="{{$countries->id}}">{{$countries->country_name}}</option>
                     @endforeach
                 </select>
                 </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <label for="name"><b>Product Category :</label></b>
                 <select class="form-control" name="product_category_id">
                     @foreach($productCategory as $categories)
-                    <option value="{{$categories->id}}" {{ ( $categories->id == $admin->product_category_id) ? 'selected' : '' }}>{{$categories->category_name}}</option>
+                    <option value="{{$categories->id}}">{{$categories->category_name}}</option>
                     @endforeach
                 </select>
-            </div>
-            <div class="col-sm-4">
-                <label for="name"><b>Status :</label></b>
-                <select class="form-control" name="status_id">
-                    @foreach($usersStatus as $status)
-                    <option value="{{$status->id}}" {{ ( $status->id == $admin->status_id) ? 'selected' : '' }}> {{$status->status}}</option>
-                    @endforeach
-                </select>
-            </div>
+                </div>
             </div>
             </br>
-            <a href="{{url('superadmin/admins')}}" class="btn btn-danger">Cancel</a>
+            <a href="{{url('superadmin/workers')}}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

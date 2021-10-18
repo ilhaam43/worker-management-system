@@ -30,9 +30,11 @@ Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Htt
     Route::resource('admins', 'AdminController');
     //all worker management routes
     Route::resource('workers', 'WorkerController');
-    //all ajax data routes
-    Route::group(['as'=>'data.','prefix' => 'data', 'namespace'=>'Ajax'], function () {
-        Route::get('/admin/', 'AjaxDataAdminController@index')->name('admin');
-    });
+});
+
+//all ajax data routes
+Route::group(['as'=>'data.','prefix' => 'data', 'namespace'=>'App\Http\Controllers\Ajax'], function () {
+    Route::get('/admin/', 'AjaxDataAdminController@index')->name('admin');
+    Route::get('/worker/', 'AjaxDataWorkerController@index')->name('worker');
 });
 

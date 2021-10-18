@@ -1,4 +1,4 @@
-@extends('workers.researcher.layout.templates')
+@extends('worker.layout.templates')
 
 @section('content')
   <main id="main" data-aos="fade-up">
@@ -9,8 +9,8 @@
         <div class="d-flex justify-content-between align-items-center">
           <h3></h3>
           <ol>
-            <li><a href="#">Researcher</a></li>
-            <li>Edit Research Job</li>
+            <li><a href="#">Worker</a></li>
+            <li>Edit Work</li>
           </ol>
         </div>
 
@@ -24,7 +24,7 @@
 
         
     <div class="card mb-3">
-    <div class="card-header bg-primary text-white"><i class="fa fa-edit"></i> Edit Research Job</div>
+    <div class="card-header bg-primary text-white"><i class="fa fa-edit"></i> Edit Work</div>
     <div class="card-body shadow b-b-5">
         @if (session('error'))
         <div class="alert alert-danger">
@@ -41,48 +41,38 @@
         </div>
     @endif
 
-        <form method="POST" action="{{ route('researcher.update.researches',$researchJobsLists['id']) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('worker.my-work.update',$listJobs->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
         <div class="form-group col-md-6">
-                <label>Company Name :</label>
-                <input type="text" class="form-control" name="company_name" placeholder="Enter your name" value="{{$researchJobsLists['company_name']}}">
-            </div>
+                <label>Company Website :</label>
+                <input type="text" class="form-control" name="company_website" placeholder="Enter your name" value="{{$listJobs->company_website}}" required>
+        </div>
+        
         <div class="form-group col-md-6">
                 <label>Company Email :</label>
-                <input type="text" class="form-control" name="company_email" value="{{$researchJobsLists['company_email']}}"> 
+                <input type="text" class="form-control" name="company_email" value="{{$listJobs->company_email}}" required> 
             </div>
         </div>
 
         <div class="row">
         <div class="form-group col-md-6">
-                <label>Company Website :</label>
-                <input type="text" class="form-control" name="company_website" placeholder="Enter your name" value="{{$researchJobsLists['company_website']}}">
-            </div>
-        <div class="form-group col-md-6">
-                <label>Company Phone :</label>
-                <input type="text" class="form-control" name="company_phone" value="{{$researchJobsLists['company_phone']}}"> 
-            </div>
-        </div>
-
-        <div class="row">
-        <div class="form-group col-md-6">
-                <label>Company Product Page :</label>
-                <input type="text" class="form-control" name="company_product_url" placeholder="Enter your name" value="{{$researchJobsLists['company_product_url']}}">
+                <label>Remark :</label>
+                <input type="text" class="form-control" name="remark" value="{{$listJobs->remark}}">
             </div>
         <div class="form-group col-md-6">
         <label>Country :</label>
                     <select type="text" class="form-control" name="country_id">
                         @foreach($listCountries as $countries) 
-                            <option value="{{$countries->id}}" {{ ( $countries->id == $researchJobsLists['country']['id']) ? 'selected' : '' }}>{{$countries->country_name}}</option>
+                            <option value="{{$countries->id}}" {{ ( $countries->id == $listJobs->country->id) ? 'selected' : '' }}>{{$countries->country_name}}</option>
                         @endforeach
                     </select>
             </div>
         </div>
 
         </br>
-        <a href="{{url('researcher/researches')}}" class="btn btn-danger">Cancel</a>
+        <a href="{{url('worker/my-work')}}" class="btn btn-danger">Cancel</a>
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
             </div>

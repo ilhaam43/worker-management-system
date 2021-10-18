@@ -59,4 +59,22 @@ class MyWorkController extends Controller
         }
         return redirect()->route('worker.my-work.index')->with('success', 'Work added successfully');
     }
+
+    public function edit($id)
+    {
+        $listCountries = Country::all();
+        $listJobs = Job::where('id', $id)->with('Country', 'JobStatus')->first();
+
+        return view('worker.my-work.edit', compact('listJobs', 'listCountries'))->with('i');
+    }
+
+    public function update(MyWorkRequest $request, $id)
+    {
+        try{    
+            $update = $this->service->updateWork($request, $id);
+        }catch(\Throwable $th){
+            return back()->withError('Work data failed to update because work data cannot be duplicated');
+        }
+        return redirect()->route('worker.my-work.index')->with('success', 'Work data updated successfully');
+    }
 }

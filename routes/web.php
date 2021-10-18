@@ -40,7 +40,7 @@ Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Contro
     Route::get('/quantity', 'DashboardController@showQuantity')->name('quantity');
     Route::get('/payments', 'DashboardController@showPayments')->name('payments');
     //all my work management routes
-    Route::resource('my-work', 'MyWorkController')->except(['create']);
+    Route::resource('my-work', 'MyWorkController')->except(['create', 'destroy']);
 });
 
 //all ajax data routes

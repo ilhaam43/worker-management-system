@@ -27,7 +27,7 @@ class AjaxDataMyWorkController extends Controller
             return Datatables::eloquent($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-                    $editRoute = route('worker.my-work.update',$data->id);
+                    $editRoute = route('worker.my-work.edit',$data->id);
                     $actionBtn = '<a class="btn btn-primary btn-sm" href="'.$editRoute.'">Edit</a>';
     
                     return $actionBtn;

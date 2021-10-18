@@ -18,19 +18,12 @@
       <div class="card-body">
       <h4 style="margin-left:10px;">My Work List</h4>
 
-      <a href="#" class="btn btn-outline-primary btn-icon-split" data-toggle="modal" data-target="#addCompanyModal" style="float: left; margin-left:10px;"><i class="fa fa-building p-r-5"></i>
+      <a href="#" class="btn btn-outline-primary btn-icon-split" data-toggle="modal" data-target="#addCompanyModal" style="margin-left:10px;"><i class="fa fa-building p-r-5"></i>
         <span class="text">Add New Work</span>
+      </a>
         
-      <a href="#" class="btn btn-outline-danger btn-icon-split" data-toggle="modal" data-target="#checkCompanyModal" style="float: left; margin-left:10px;"><i class="fa fa-search p-r-5"></i>
-        <span class="text">Repeat Check</span>
-      </a>
-
-      <a href="{{ url('worker/my-work/country-records') }}" class="btn btn-outline-info btn-icon-split" style="float: left; margin-left: 10px;"><i class="fa fa-info-circle p-r-5"></i>
-        <span class="text">Current Countries Records</span>
-      </a>
+      
     
-      </br>
-      </br>
       </br>
       </br>
 
@@ -85,7 +78,7 @@
           </button>
         </div>
         <div class="modal-body">
-        <form method="POST" action="{{route('worker.my-work.store')}}">
+        <form method="POST" action="{{route('worker.my-work.store')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" name="user_id" value="{{$user->id}}">
         <input type="hidden" name="job_status_id" value="3">
@@ -100,7 +93,7 @@
         </div>
         <div class="form-group">
           <label for="name">Screenshot :</label>
-          <input type="file" name="screenshot" class="form-control" id="screenshot">
+          <input type="file" name="screenshot" class="form-control" id="screenshot" required>
         </div>
         <div class="form-group">
         <label>Country :</label>
@@ -113,7 +106,7 @@
         <div class="form-group">
           <label for="name">Remark :</label>
           <input type="text" name="remark" class="form-control" id="remark">
-          <small id="email-notes" class="form-text text-muted"> Notes : if remark not available just leave empty in remark form.</small>
+          <small id="remark-notes" class="form-text text-muted"> Notes : if remark not available just leave empty in remark form.</small>
         </div>
 
         </div>
@@ -126,43 +119,7 @@
     </div>
   </div>
 
-  <!-- Check Company Modal-->
-  <div class="modal fade" id="checkCompanyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Repeat Check Company Data</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <form method="POST" action="{{url('researcher/check-company')}}">
-        {{ csrf_field() }}
-        <div class="form-group">
-          <label for="name">Check data :</label>
-          <input type="text" name="input_data" class="form-control" id="input_data" required>
-        </div>
-        <div class="form-group">
-          <label>Type search :</label>
-                  <select type="text" class="form-control" name="type_search">
-                      <option value="name">Company Name</option>
-                      <option value="website">Company Website</option>
-                      <option value="email">Company Email</option>
-                      <option value="phone">Company Phone</option>
-                      <option value="product_url">Company Product Url</option>
-                  </select>
-        </div>
-
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- ======= Footer ======= -->
   
@@ -175,34 +132,6 @@
 </body>
 @include('worker.javascript.showMyWorkData')
 <script>
-function checkName(){
-    let companyName = document.getElementById("company_name");
-    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    companyName = companyName.value;
-    
-    $.ajax({
-                type: 'POST',
-                url: "/researcher/data/validation/company-name",
-                cache: false,
-                data: {_token: CSRF_TOKEN, company_name:companyName},
-                dataType: 'JSON',
-                success: function (results) {
-                  
-                    if (results.success == true && results.empty == false) {
-                        $('#company_name').css('border', '3px solid #16e445');
-                        $('#company_name').nextAll().remove();
-                    } else if(results.success == false && results.empty == false) {
-                        $('#company_name').css({"border":"3px solid red"});
-                        $('#company_name').nextAll().remove();
-                        $('#company_name').after("<p style=color:red;>This company already exists, please re-enter another company</p>");
-                    } else if(results.success == false && results.empty == true){
-                        $('#company_name').css({"border":""});
-                        $('#company_name').nextAll().remove();
-                    }
-                }
-      });
-}
-
 function checkWebsite(){
     let companyWebsite = document.getElementById("company_website");
     let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -210,7 +139,7 @@ function checkWebsite(){
     
     $.ajax({
                 type: 'POST',
-                url: "/researcher/data/validation/company-website",
+                url: "/data/validation/website",
                 cache: false,
                 data: {_token: CSRF_TOKEN, company_website:companyWebsite},
                 dataType: 'JSON',
@@ -223,7 +152,7 @@ function checkWebsite(){
                       console.log('error');
                         $('#company_website').css({"border":"3px solid red"});
                         $('#company_website').nextAll().remove();
-                        $('#company_website').after("<p style=color:red;>This company already exists, please re-enter another company</p>");
+                        $('#company_website').after("<p style=color:red;>This website already exists, please re-enter another website</p>");
                     } else if(results.success == false && results.empty == true){
                         $('#company_website').css({"border":""});
                         $('#company_website').nextAll().remove();
@@ -239,7 +168,7 @@ function checkEmail(){
     
     $.ajax({
                 type: 'POST',
-                url: "/researcher/data/validation/company-email",
+                url: "/data/validation/email",
                 cache: false,
                 data: {_token: CSRF_TOKEN, company_email:companyEmail},
                 dataType: 'JSON',
@@ -252,68 +181,10 @@ function checkEmail(){
                       console.log('error');
                         $('#company_email').css({"border":"3px solid red"});
                         $('#company_email').nextAll().remove();
-                        $('#company_email').after("<p style=color:red;>This company already exists, please re-enter another company</p>");
+                        $('#company_email').after("<p style=color:red;>This email already exists, please re-enter another email</p>");
                     } else if(results.success == false && results.empty == true){
                         $('#company_email').css({"border":""});
                         $('#company_email').nextAll().remove();
-                    }
-                }
-      });
-}
-
-function checkPhone(){
-    let companyPhone = document.getElementById("company_phone");
-    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    companyPhone = companyPhone.value;
-    
-    $.ajax({
-                type: 'POST',
-                url: "/researcher/data/validation/company-phone",
-                cache: false,
-                data: {_token: CSRF_TOKEN, company_phone:companyPhone},
-                dataType: 'JSON',
-                success: function (results) {
-                  console.log(results.success);
-                    if (results.success == true && results.empty == false) {
-                        $('#company_phone').css('border', '3px solid #16e445');
-                        $('#company_phone').nextAll().remove();
-                    } else if(results.success == false && results.empty == false) {
-                      console.log('error');
-                        $('#company_phone').css({"border":"3px solid red"});
-                        $('#company_phone').nextAll().remove();
-                        $('#company_phone').after("<p style=color:red;>This company already exists, please re-enter another company</p>");
-                    } else if(results.success == false && results.empty == true){
-                        $('#company_phone').css({"border":""});
-                        $('#company_phone').nextAll().remove();
-                    }
-                }
-      });
-}
-
-function checkProduct(){
-    let companyProduct = document.getElementById("company_product_url");
-    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    companyProduct = companyProduct.value;
-    
-    $.ajax({
-                type: 'POST',
-                url: "/researcher/data/validation/company-product",
-                cache: false,
-                data: {_token: CSRF_TOKEN, company_product_url:companyProduct},
-                dataType: 'JSON',
-                success: function (results) {
-                  console.log(results.success);
-                    if (results.success == true && results.empty == false) {
-                        $('#company_product_url').css('border', '3px solid #16e445');
-                        $('#company_product_url').nextAll().remove();
-                    } else if(results.success == false && results.empty == false) {
-                      console.log('error');
-                        $('#company_product_url').css({"border":"3px solid red"});
-                        $('#company_product_url').nextAll().remove();
-                        $('#company_product_url').after("<p style=color:red;>This company already exists, please re-enter another company</p>");
-                    } else if(results.success == false && results.empty == true){
-                        $('#company_product_url').css({"border":""});
-                        $('#company_product_url').nextAll().remove();
                     }
                 }
       });

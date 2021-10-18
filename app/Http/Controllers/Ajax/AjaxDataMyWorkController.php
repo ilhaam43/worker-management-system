@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;    
 
-use App\Models\User;
-use App\Models\UserStatus;
-use App\Models\Country;
 use App\Models\Job;
 use DataTables;
 
@@ -25,17 +22,26 @@ class AjaxDataMyWorkController extends Controller
         if ($request->ajax()) {
             $auth = Auth::user();
 
-            $data = Job::where('user_id', $auth->id)->with('Country', 'JobsStatus')->select('jobs.*');
+            $data = Job::where('user_id', $auth->id)->with('Country', 'JobStatus')->select('jobs.*');
             
             return Datatables::eloquent($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($data){
-                    $editRoute = route('worker.my-work',$data->id);
+                    $editRoute = route('worker.my-work.update',$data->id);
                     $actionBtn = '<a class="btn btn-primary btn-sm" href="'.$editRoute.'">Edit</a>';
     
                     return $actionBtn;
+                })->addColumn('screenshot', function($data){
+                    if($data->screenshot_url == NULL){
+                        $screenshotLink = 'DELETED';
+                    }else{
+                        $url = asset($data->screenshot_url);
+                        $screenshotLink = '<a href="'.$url.'">Screenshot</a>';
+                    }
+
+                    return $screenshotLink;
                 })
-                ->rawColumns(['action'])->setRowId(function ($data) {
+                ->rawColumns(['action', 'screenshot'])->setRowId(function ($data) {
                     return $data->id;
                 })
                 ->make(true);

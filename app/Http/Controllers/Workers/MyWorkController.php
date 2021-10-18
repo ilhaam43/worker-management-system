@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
+use App\Http\Requests\MyWorkRequest;
+use App\Services\MyWorkService;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\ProductCategory;
@@ -22,9 +24,11 @@ class MyWorkController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private $service;
+    
+    public function __construct(MyWorkService $service)
     {
-
+        $this->service = $service;
     }
 
     /**
@@ -40,10 +44,19 @@ class MyWorkController extends Controller
         $productCategory = User::where('id', $user->id)->with('ProductCategory')->get();
         $productCategories = json_decode($productCategory, true);
 
-        $jobs = Job::where('user_id', $user->id)->with('Country', 'JobsStatus')->get();
+        $jobs = Job::where('user_id', $user->id)->with('Country', 'JobStatus')->get();
         $jobsLists = json_decode($jobs, true);
         
         return view('worker.my-work.index', compact('jobsLists','listCountries','productCategories', 'user'))->with('i');
     }
 
+    public function store(MyWorkRequest $request)
+    {
+        try{    
+            $store = $this->service->storeWork($request);
+        }catch(\Throwable $th){
+            return redirect()->route('worker.my-work.index')->with('error', 'Work failed to add because work data cannot be duplicated');
+        }
+        return redirect()->route('worker.my-work.index')->with('success', 'Work added successfully');
+    }
 }

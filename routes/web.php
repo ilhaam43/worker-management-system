@@ -34,6 +34,7 @@ Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Htt
 
 Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Controllers\Workers','middleware'=>['auth','worker']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/message', 'DashboardController@showMessage')->name('message');
     Route::get('/faq', 'DashboardController@showFAQ')->name('faq');
     Route::get('/notice', 'DashboardController@showNotice')->name('notice');
     Route::get('/quantity', 'DashboardController@showQuantity')->name('quantity');
@@ -47,5 +48,7 @@ Route::group(['as'=>'data.','prefix' => 'data', 'namespace'=>'App\Http\Controlle
     Route::get('/admin/', 'AjaxDataAdminController@index')->name('admin');
     Route::get('/worker/', 'AjaxDataWorkerController@index')->name('worker');
     Route::get('/my-work/', 'AjaxDataMyWorkController@index')->name('my_work');
+    Route::post('/validation/website', 'AjaxDataMyWorkValidationController@website')->name('validation.website');
+    Route::post('/validation/email', 'AjaxDataMyWorkValidationController@email')->name('validation.email');
 });
 

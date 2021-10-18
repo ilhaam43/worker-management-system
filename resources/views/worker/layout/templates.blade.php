@@ -69,7 +69,6 @@
       @else
           <li class="{{ request()->is('worker') ? 'active' : ''}}"><a href="{{ url('worker') }}"> How To Work</a></li>
       @endif
-
           <li class="{{ request()->is('worker/my-work') ? 'active' : ''}}"><a href="{{ url('worker/my-work') }}"> My Work</a></li>
       @if($globalWorkerNotifications)
         @if($globalWorkerNotifications->faq == 1)

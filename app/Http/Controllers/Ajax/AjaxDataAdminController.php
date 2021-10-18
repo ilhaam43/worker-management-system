@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;    
 
 use App\Models\User;
-use App\Models\UserStatus;
-use App\Models\Country;
 use DataTables;
 
 class AjaxDataAdminController extends Controller

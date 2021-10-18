@@ -9,7 +9,7 @@ class WorkerNotification extends Model
 {
     use HasFactory;
 
-    protected $table = 'worker_notification';
+    protected $table = 'workers_notifications';
 
     protected $guarded = [
         'id'

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('login-page.login');
-});
+})->name('login-page');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -24,8 +24,15 @@ Auth::routes();
 
 Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Http\Controllers\SuperAdmin','middleware'=>['auth','superadmin']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
-    //product category all route
-    Route::resource('product-category', 'ProductCategoryController');
-    
+    //all product category management routes
+    Route::resource('product-categories', 'ProductCategoryController');
+    //all admin management routes
+    Route::resource('admins', 'AdminController');
+    //all worker management routes
+    Route::resource('workers', 'WorkerController');
+    //all ajax data routes
+    Route::group(['as'=>'data.','prefix' => 'data', 'namespace'=>'Ajax'], function () {
+        Route::get('/admin/', 'AjaxDataAdminController@index')->name('admin');
+    });
 });
 

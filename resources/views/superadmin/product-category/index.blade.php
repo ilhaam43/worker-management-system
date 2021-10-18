@@ -48,9 +48,9 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $categories->category_name }}</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="{{ route('superadmin.product-category.edit',$categories->id) }}">Edit</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('superadmin.product-categories.edit',$categories->id) }}">Edit</a>
 
-                    <button class="btn btn-danger btn-sm remove-user" data-id="{{ $categories->id }}" data-action="{{ route('superadmin.product-category.destroy',$categories->id) }}" onclick="deleteConfirmation({{$categories->id}})"> Delete</button>
+                    <button class="btn btn-danger btn-sm remove-user" data-id="{{ $categories->id }}" data-action="{{ route('superadmin.product-categories.destroy',$categories->id) }}" onclick="deleteConfirmation({{$categories->id}})"> Delete</button>
                   </form>
                 </td>
               </tr>
@@ -77,7 +77,7 @@
           </button>
         </div>
         <div class="modal-body">
-        <form method="POST" action="{{url('superadmin/product-category')}}">
+        <form method="POST" action="{{url('superadmin/product-categories')}}">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="name"><b>Category Name :</label></b>

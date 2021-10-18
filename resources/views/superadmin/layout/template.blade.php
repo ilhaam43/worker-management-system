@@ -73,8 +73,8 @@
             <a class="collapse-item" href="/superadmin/users">All Users</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Admin Menu :</h6>
-            <a class="collapse-item" href="/superadmin/admin/create">Create New Admin</a>
-            <a class="collapse-item" href="/superadmin/admin">Admin List</a>
+            <a class="collapse-item" href="/superadmin/admins/create">Create New Admin</a>
+            <a class="collapse-item" href="/superadmin/admins">Admin List</a>
             <h6 class="collapse-header">Workers Menu :</h6>
             <a class="collapse-item" href="/superadmin/workers/create">Create New Workers</a>
             <a class="collapse-item" href="/superadmin/workers/researcher">Researcher List</a>
@@ -93,7 +93,7 @@
         <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Categories menu :</h6>
-            <a class="collapse-item" href="{{ url('superadmin/product-category') }}">All Categories</a>
+            <a class="collapse-item" href="{{ url('superadmin/product-categories') }}">All Categories</a>
           </div>
         </div>
       </li>

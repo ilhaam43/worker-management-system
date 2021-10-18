@@ -40,11 +40,11 @@ class ProductCategoryController extends Controller
     public function store(ProductCategoryRequest $request)
     {
         try{    
-            $store = $this->service->store($request);
+            $store = $this->service->storeProductCategory($request);
         }catch(\Throwable $th){
             return back()->withError('Product categories failed to add because product categories cannot be duplicated');
         }
-        return redirect()->route('superadmin.product-category.index')->with('success', 'Product category added successfully');
+        return redirect()->route('superadmin.product-categories.index')->with('success', 'Product category added successfully');
     }
 
     public function edit($id)
@@ -52,7 +52,7 @@ class ProductCategoryController extends Controller
         $productCategory = ProductCategory::find($id);
         
         if(!$productCategory){
-            return redirect()->route('superadmin.product-category.index');
+            return redirect()->route('superadmin.product-categories.index');
         }
 
         return view('superadmin.product-category.edit', compact('productCategory'));
@@ -61,17 +61,17 @@ class ProductCategoryController extends Controller
     public function update(ProductCategoryRequest $request, $id)
     {
         try{    
-            $update = $this->service->update($request, $id);
+            $update = $this->service->updateProductCategory($request, $id);
         }catch(\Throwable $th){
             return back()->withError('Product categories failed to update because product categories cannot be duplicated');
         }
-        return redirect()->route('superadmin.product-category.index')->with('success', 'Product category updated successfully');
+        return redirect()->route('superadmin.product-categories.index')->with('success', 'Product category updated successfully');
     }
 
     public function destroy($id)
     {
         try{    
-            $destroy = $this->service->destroy($id);
+            $destroy = $this->service->destroyProductCategory($id);
         }catch(\Throwable $th){
             return response()->json(['success' => false, 'message' => "Product category data failed to delete",]);
         }

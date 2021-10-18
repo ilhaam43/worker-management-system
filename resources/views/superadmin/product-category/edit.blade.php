@@ -29,7 +29,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Edit Product Category</h6>
       </div>
       <div class="card-body">
-      <form method="POST" action="{{ route('superadmin.product-category.update',$productCategory->id) }}">
+      <form method="POST" action="{{ route('superadmin.product-categories.update',$productCategory->id) }}">
           @csrf
           @method('PUT')
           <div class="form-row">
@@ -39,7 +39,7 @@
             </div>
           </div>
           </br>
-          <a href="{{url('superadmin/product-category')}}" class="btn btn-danger">Cancel</a>
+          <a href="{{url('superadmin/product-categories')}}" class="btn btn-danger">Cancel</a>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>

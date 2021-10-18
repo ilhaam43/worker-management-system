@@ -10,7 +10,7 @@
           <h3></h3>
           <ol>
             <li><a href="#">Worker</a></li>
-            <li>How We Work</li>
+            <li>How To Work</li>
           </ol>
         </div>
 

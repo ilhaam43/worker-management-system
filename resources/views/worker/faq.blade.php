@@ -1,4 +1,4 @@
-@extends('workers.researcher.layout.templates')
+@extends('worker.layout.templates')
 
 @section('content')
   <main id="main">
@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h3></h3>
           <ol>
-            <li style="margin-left:20px;"><a href="#">Researcher</a></li>
+            <li style="margin-left:20px;"><a href="#">Worker</a></li>
             <li style="margin-right:20px;">FAQ</li>
           </ol>
         </div>
@@ -17,7 +17,7 @@
     <div class="card shadow mb-4">
       <div class="card-body">
           <h2 class="text-center em4"> Frequently Asked Questions </h2> <hr class="hr-short-auto">
-            <img src="https://searchclientnow.com/images/faq.png" width="280" height="250" alt="upgrade" class="m-w-600 d-block m-auto"><hr>
+            <img src="{{ asset('assets/workers/assets/img/FAQ.png') }}" width="300" height="250" alt="upgrade" class="m-w-600 d-block m-auto"><hr>
                 <div class="form-group">
                     {!! $researchFAQ->setting_description ?? "" !!}
                   </div>

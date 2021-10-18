@@ -16,7 +16,7 @@ class CreateWorkersNotificationsTable extends Migration
         Schema::create('workers_notifications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->boolean('how_we_work');
+            $table->boolean('how_to_work');
             $table->boolean('faq');
             $table->boolean('notice');
             $table->timestamps();

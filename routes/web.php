@@ -34,6 +34,10 @@ Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Htt
 
 Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Controllers\Workers','middleware'=>['auth','worker']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/faq', 'DashboardController@showFAQ')->name('faq');
+    Route::get('/notice', 'DashboardController@showNotice')->name('notice');
+    Route::get('/quantity', 'DashboardController@showQuantity')->name('quantity');
+    Route::get('/payments', 'DashboardController@showPayments')->name('payments');
 });
 
 //all ajax data routes

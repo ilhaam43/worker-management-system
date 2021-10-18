@@ -60,17 +60,17 @@
         <ul>
       
       @if($globalWorkerNotifications)
-        @if($globalWorkerNotifications->how_we_work == 1)
-          <li class="{{ request()->is('worker') ? 'active' : ''}}"><a href="{{ url('worker') }}"><i class="fas fa-fw fa-sync fa-spin"></i> How We Work</a></li>
+        @if($globalWorkerNotifications->how_to_work == 1)
+          <li class="{{ request()->is('worker') ? 'active' : ''}}"><a href="{{ url('worker') }}"><i class="fas fa-fw fa-sync fa-spin"></i> How To Work</a></li>
         @endif
-        @if($globalWorkerNotifications->how_we_work == 0)
-          <li class="{{ request()->is('worker') ? 'active' : ''}}"><a href="{{ url('worker') }}"> How We Work</a></li>
+        @if($globalWorkerNotifications->how_to_work == 0)
+          <li class="{{ request()->is('worker') ? 'active' : ''}}"><a href="{{ url('worker') }}"> How To Work</a></li>
         @endif
       @else
-          <li class="{{ request()->is('worker') ? 'active' : ''}}"><a href="{{ url('worker') }}"> How We Work</a></li>
+          <li class="{{ request()->is('worker') ? 'active' : ''}}"><a href="{{ url('worker') }}"> How To Work</a></li>
       @endif
 
-          <li class="{{ request()->is('worker/jobs') ? 'active' : ''}}"><a href="{{ url('worker/jobs') }}"> Jobs</a></li>
+          <li class="{{ request()->is('worker/my-work') ? 'active' : ''}}"><a href="{{ url('worker/my-work') }}"> My Work</a></li>
       @if($globalWorkerNotifications)
         @if($globalWorkerNotifications->faq == 1)
           <li class="{{ request()->is('worker/faq') ? 'active' : ''}}"><a href="{{ url('worker/faq') }}"><i class="fas fa-fw fa-sync fa-spin"></i> FAQ</a></li>
@@ -92,12 +92,15 @@
       @else
         <li class="{{ request()->is('worker/notice') ? 'active' : ''}}"><a href="{{ url('worker/notice') }}"> Notice</a></li>
       @endif
-          <li class="{{ request()->is('worker/my-work') ? 'active' : ''}}"><a href="{{ url('worker/my-work') }}">My Work</a></li>
+          <li class="{{ request()->is('worker/quantity') ? 'active' : ''}}"><a href="{{ url('worker/quantity') }}">Quantity</a></li>
           <li class="{{ request()->is('worker/payments') ? 'active' : ''}}"><a href="{{ url('worker/payments') }}">Payments</a></li>
           <li class="drop-down"><a href="">Account</a>
             <ul>
               <li><a href="{{ url('worker/profile') }}">Profile</a></li>
-              <li><a href="{{ url('logout') }}">Logout</a></li>
+              <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Logout</a></li>
+              <form id="form-logout" action="{{ route('logout') }}" method="POST">
+                @csrf
+              </form>
             </ul>
           </li>
 

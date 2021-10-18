@@ -1,4 +1,4 @@
-@extends('workers.researcher.layout.templates')
+@extends('worker.layout.templates')
 
 @section('content')
   <main id="main" data-aos="fade-up">
@@ -9,8 +9,8 @@
         <div class="d-flex justify-content-between align-items-center">
           <h3></h3>
           <ol>
-            <li><a href="#">Researcher</a></li>
-            <li>My Work</li>
+            <li><a href="#">Worker</a></li>
+            <li>Quantity</li>
           </ol>
         </div>
 
@@ -24,7 +24,7 @@
 
     
 <div class="card shadow  mb-3" >
-<div class="card-header bg-primary text-white"> <i class="fa fa-building"> </i> My Work Statistics  </div>
+<div class="card-header bg-primary text-white"> <i class="fa fa-building"> </i> My Quantity Statistics  </div>
 <div class="card-body ">
 
   <div class="row m-b-20">
@@ -32,18 +32,18 @@
       <div class="shadow card text-center p-30 white text-white" style="background:#5cb85c">
         </br>
         <span><i class="fa fa-users fa-3x"></i>
-        <span style="font-size:3em; font-family:Open Sans, sans-serif;"> {{$companiesApproved}}</span> 
+        <span style="font-size:3em; font-family:Open Sans, sans-serif;"> {{$jobApproved}}</span> 
         </span>
-        <h3 style="font-size:1em font-family:Open Sans, sans-serif;"> Companies Approved </h3>
+        <h3 style="font-size:1em font-family:Open Sans, sans-serif;"> Approved Quantity </h3>
       </div>
     </div>
     <div class="col-md-4">
       <div class="bg-dot bg-light shadow card text-center p-30">
       </br>
         <span><i class="fa fa-sync fa-spin fa-3x"> </i> 
-        <span style="font-size:3em; font-family:Open Sans, sans-serif;"> {{$companiesPending}}</span> 
+        <span style="font-size:3em; font-family:Open Sans, sans-serif;"> {{$jobPending}}</span> 
         </span>
-        <h3 style="font-size:1em font-family:Open Sans, sans-serif;"> Companies Pending </h3>
+        <h3 style="font-size:1em font-family:Open Sans, sans-serif;"> Pending Quantity </h3>
       </div>
     </div>
     <div class="col-md-4">
@@ -51,10 +51,10 @@
       </br>
         <span style="font-size:3em; font-family:Open Sans, sans-serif;"><i class="fa fa-times fa-1x"> </i> 
         <span> 
-          {{$companiesDisapproved}}
+          {{$jobDisapproved}}
         </span>
         </span>
-        <h3 style="font-size:1em font-family:Open Sans, sans-serif;"> Companies Not Approved </h3>
+        <h3 style="font-size:1em font-family:Open Sans, sans-serif;"> Disapproved Quantity </h3>
       </div>
     </div>
    

@@ -1,4 +1,4 @@
-@extends('workers.researcher.layout.templates')
+@extends('worker.layout.templates')
 
 @section('content')
   <main id="main" data-aos="fade-up">
@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h3></h3>
           <ol>
-            <li><a href="#">Researcher</a></li>
+            <li><a href="#">Worker</a></li>
             <li>Notice</li>
           </ol>
         </div>
@@ -29,7 +29,7 @@
   
   <div class="card-body shadow">
     <h2 class="text-center em4"> Notices </h2> <hr class="hr-short-auto">
-      <img src="https://searchclientnow.com/images/notice.png" width="250" height="250" alt="upgrade" class=" d-block m-auto"> <hr>
+      <img src="{{ asset('assets/workers/assets/img/notice.png') }}" width="250" height="250" alt="upgrade" class=" d-block m-auto"> <hr>
 
       <div class="form-group">
             {!! $researchNotice->setting_description ?? "" !!}

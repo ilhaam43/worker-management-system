@@ -1,4 +1,4 @@
-@extends('workers.researcher.layout.templates')
+@extends('worker.layout.templates')
 
 @section('content')
   <main id="main" data-aos="fade-up">
@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h3></h3>
           <ol>
-            <li><a href="#">Researcher</a></li>
+            <li><a href="#">Worker</a></li>
             <li>Payments</li>
           </ol>
         </div>
@@ -28,27 +28,19 @@
   <div class="card-body shadow b-b-5">
   
       <div class="row">
-        <div class="col-md-4 text-center ">
-            <div class="form-group shadow m-b-30 b-1-ddd p-20 ">
-            <h2 class="text-info"><i class="fa fa-users fa-2x"></i></h2>
-            <h2>Research Quantity <br> <hr> {{$researchQuantity}}</h2></br>
-          </div>
-            </div>
-          <div class="col-md-4 text-center ">
+          <div class="col-md-6 text-center ">
             <div class="form-group shadow m-b-30 b-1-ddd p-20 ">
             <h2 class="text-success"> <i class="fa fa-check-square fa-2x"></i></h2>
-            <h2> Research Paid <br> <hr> {{$researchPaid ?? 0}}</h2></br>
+            <h2> Approved Quantity <br> <hr> {{$jobPaid ?? 0}}</h2></br>
           </div>
             </div>
-          <div class="col-md-4 text-center">
+          <div class="col-md-6 text-center">
             <div class="form-group shadow m-b-30 b-1-ddd p-20 ">
             <h2 class="text-success"><i class="fa fa-money-bill fa-2x"></i></h2>
-            <h2> Amount Paid <br><hr> {{$amountPaid ?? 0}}</h2></br>
+            <h2> Paid Quantity <br><hr> {{$amountPaid ?? 0}}</h2></br>
           </div>
         </div>
-
         </div>
-
       </div>
     </div>
 	</div>

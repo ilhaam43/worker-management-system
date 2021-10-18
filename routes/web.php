@@ -25,7 +25,7 @@ Auth::routes();
 Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Http\Controllers\SuperAdmin','middleware'=>['auth','superadmin']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     //all product category management routes
-    Route::resource('product-categories', 'ProductCategoryController');
+    Route::resource('product-categories', 'ProductCategoryController')->except(['create']);
     //all admin management routes
     Route::resource('admins', 'AdminController');
     //all worker management routes
@@ -38,11 +38,14 @@ Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Contro
     Route::get('/notice', 'DashboardController@showNotice')->name('notice');
     Route::get('/quantity', 'DashboardController@showQuantity')->name('quantity');
     Route::get('/payments', 'DashboardController@showPayments')->name('payments');
+    //all my work management routes
+    Route::resource('my-work', 'MyWorkController')->except(['create']);
 });
 
 //all ajax data routes
 Route::group(['as'=>'data.','prefix' => 'data', 'namespace'=>'App\Http\Controllers\Ajax'], function () {
     Route::get('/admin/', 'AjaxDataAdminController@index')->name('admin');
     Route::get('/worker/', 'AjaxDataWorkerController@index')->name('worker');
+    Route::get('/my-work/', 'AjaxDataMyWorkController@index')->name('my_work');
 });
 

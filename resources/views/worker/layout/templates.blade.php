@@ -71,14 +71,14 @@
       @endif
           <li class="{{ request()->is('worker/my-work') ? 'active' : ''}}"><a href="{{ url('worker/my-work') }}"> My Work</a></li>
       @if($globalWorkerNotifications)
-        @if($globalWorkerNotifications->faq == 1)
-          <li class="{{ request()->is('worker/faq') ? 'active' : ''}}"><a href="{{ url('worker/faq') }}"><i class="fas fa-fw fa-sync fa-spin"></i> FAQ</a></li>
+        @if($globalWorkerNotifications->message == 1)
+          <li class="{{ request()->is('worker/message') ? 'active' : ''}}"><a href="{{ url('worker/message') }}"><i class="fas fa-fw fa-sync fa-spin"></i> Message Template</a></li>
         @endif
-        @if($globalWorkerNotifications->faq == 0)
-          <li class="{{ request()->is('worker/faq') ? 'active' : ''}}"><a href="{{ url('worker/faq') }}"> FAQ</a></li>
+        @if($globalWorkerNotifications->message == 0)
+          <li class="{{ request()->is('worker/message') ? 'active' : ''}}"><a href="{{ url('worker/message') }}"> Message Template</a></li>
         @endif
       @else
-        <li class="{{ request()->is('worker/faq') ? 'active' : ''}}"><a href="{{ url('worker/faq') }}"> FAQ</a></li>
+        <li class="{{ request()->is('worker/message') ? 'active' : ''}}"><a href="{{ url('worker/message') }}"> Message Template</a></li>
       @endif
 
       @if($globalWorkerNotifications)

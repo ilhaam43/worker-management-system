@@ -42,14 +42,14 @@ class DashboardController extends Controller
         return view('worker.index', compact('howWeWork'));
     }
 
-    public function showFAQ()
+    public function showMessage()
     {
         $auth = Auth::user();
-        $researchFAQ = Setting::where('id', 4)->first();
+        $message = Setting::where('id', 4)->first();
 
-        $updateFAQ = WorkerNotification::where('user_id', $auth->id)->update(['faq' => 0]);
+        $updateMessage = WorkerNotification::where('user_id', $auth->id)->update(['message' => 0]);
 
-        return view('worker.faq', compact('researchFAQ'));
+        return view('worker.message', compact('message'));
     }
 
     public function showNotice()

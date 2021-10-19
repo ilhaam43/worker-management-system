@@ -17,7 +17,7 @@ class CreateWorkersNotificationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->boolean('how_to_work');
-            $table->boolean('faq');
+            $table->boolean('message');
             $table->boolean('notice');
             $table->timestamps();
         });

@@ -9,17 +9,17 @@
           <h3></h3>
           <ol>
             <li style="margin-left:20px;"><a href="#">Worker</a></li>
-            <li style="margin-right:20px;">FAQ</li>
+            <li style="margin-right:20px;">Message Template</li>
           </ol>
         </div>
     </section><!-- End Breadcrumbs -->
 
     <div class="card shadow mb-4">
       <div class="card-body">
-          <h2 class="text-center em4"> Frequently Asked Questions </h2> <hr class="hr-short-auto">
-            <img src="{{ asset('assets/workers/assets/img/FAQ.png') }}" width="300" height="250" alt="upgrade" class="m-w-600 d-block m-auto"><hr>
+          <h2 class="text-center em4"> Message Template </h2> <hr class="hr-short-auto">
+            <img src="{{ asset('assets/workers/assets/img/message.jpg') }}" width="300" height="250" alt="upgrade" class="m-w-600 d-block m-auto"><hr>
                 <div class="form-group">
-                    {!! $researchFAQ->setting_description ?? "" !!}
+                    {!! $message->setting_description ?? "" !!}
                   </div>
               </div>
             </div>

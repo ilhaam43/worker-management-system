@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Job;
+use App\Models\ProductCategory;
 use App\Models\WorkerNotification;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,7 +34,12 @@ class AppServiceProvider extends ServiceProvider
                 $auth = Auth::user();
 
                 if($auth->userable_type == 'App\Models\Admin'){
+                    $globalPendingWork = count(Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 3)->get());
                     
+                    $categoryAdmin = ProductCategory::where('id', $auth->product_category_id)->first();
+
+                    view()->share('globalPendingWork', $globalPendingWork);
+                    view()->share('categoryAdmin', $categoryAdmin->category_name);
                 }
 
                 if($auth->userable_type == 'App\Models\Worker')

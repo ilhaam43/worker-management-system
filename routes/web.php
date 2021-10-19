@@ -32,6 +32,10 @@ Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Htt
     Route::resource('workers', 'WorkerController');
 });
 
+Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'App\Http\Controllers\Admin','middleware'=>['auth','admin']], function () {
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+});
+
 Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Controllers\Workers','middleware'=>['auth','worker']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::get('/message', 'DashboardController@showMessage')->name('message');

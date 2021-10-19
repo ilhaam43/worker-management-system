@@ -34,6 +34,8 @@ Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Htt
 
 Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'App\Http\Controllers\Admin','middleware'=>['auth','admin']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    //all worker management routes
+    Route::resource('workers', 'WorkerController');
 });
 
 Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Controllers\Workers','middleware'=>['auth','worker']], function () {
@@ -55,6 +57,8 @@ Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Contro
 Route::group(['as'=>'data.','prefix' => 'data', 'namespace'=>'App\Http\Controllers\Ajax'], function () {
     Route::get('/admin/', 'AjaxDataAdminController@index')->name('admin');
     Route::get('/worker/', 'AjaxDataWorkerController@index')->name('worker');
+    Route::get('/worker/categories', 'AjaxDataWorkerController@workerByCategory')->name('worker.category');
+    Route::post('/worker/block', 'AjaxDataWorkerController@blockWorkers')->name('worker.block');
     Route::get('/my-work/', 'AjaxDataMyWorkController@index')->name('my_work');
     Route::post('/validation/website', 'AjaxDataMyWorkValidationController@website')->name('validation.website');
     Route::post('/validation/email', 'AjaxDataMyWorkValidationController@email')->name('validation.email');

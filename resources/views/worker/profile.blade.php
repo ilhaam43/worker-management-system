@@ -1,4 +1,4 @@
-@extends('workers.researcher.layout.templates')
+@extends('worker.layout.templates')
 
 @section('content')
   <main id="main" data-aos="fade-up">
@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h3></h3>
           <ol>
-            <li><a href="#">Researcher</a></li>
+            <li><a href="#">Worker</a></li>
             <li>Profile</li>
           </ol>
         </div>
@@ -40,41 +40,26 @@
             </ul>
         </div>
     @endif
-    
-        <div class="row">
-        <div class="col-md-2 text-center">
-            <div class="form-group">
-            <img src="{{ $userData['profile_image'] ? asset($userData['profile_image']) : 'https://searchclientnow.com/images/avatar.jpg' }}" width="150" height="150">
-            </div>
-            </div>
-        </div>
 
-        <form method="POST" action="{{ route('researcher.update') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('worker.profile.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
                 <label>Name :</label>
-                <input type="text" class="form-control" name="name" placeholder="Enter your name" value="{{$userData['name']}}">
+                <input type="text" class="form-control" name="name" placeholder="Enter your name" value="{{$user->name}}">
             </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
                 <label> Email :</label>
-                <input type="text" class="form-control" name="email" value="{{$userData['email']}}" disabled> 
+                <input type="text" class="form-control" name="email" value="{{$user->email}}" disabled> 
             </div>
-        </div>
-
-        <div class="row">
-        <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label>Country :</label>
                 <select type="text" class="form-control" name="country_id">
                     @foreach($listCountries as $countries)
-                    <option value="{{$countries->id}}" {{ ( $countries->id == $userData['country']['id']) ? 'selected' : '' }}>{{$countries->country_name}}</option>
+                    <option value="{{$countries->id}}" {{ ( $countries->id == $user->country_id) ? 'selected' : '' }}>{{$countries->country_name}}</option>
                     @endforeach
                 </select>
-            </div>
-        <div class="form-group col-md-6">
-                <label>Profile Image :</label>
-                <input type="file" name="profile_image" class="form-control" id="profile_image">
             </div>
         </div>
 

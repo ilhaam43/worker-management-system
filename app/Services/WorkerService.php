@@ -47,6 +47,21 @@ class WorkerService
         }
     }
 
+    public function updateProfileWorker($request, $id)
+    {
+        $check = empty($request['password']);
+        $user = User::find($id);
+
+        if($check == 0){
+            $request['password'] = Hash::make($request['password']);
+            $updateUser = $user->update($request->except(['confirm_password']));
+            return $updateUser;
+        }elseif($check == 1){
+            $updateUser = $user->update($request->except(['password', 'confirm_password']));
+            return $updateUser;
+        }
+    }
+
     public function destroyWorker($id)
     {
         $worker = User::where('id', $id)->first();

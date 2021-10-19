@@ -41,6 +41,11 @@ Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Contro
     Route::get('/payments', 'DashboardController@showPayments')->name('payments');
     //all my work management routes
     Route::resource('my-work', 'MyWorkController')->except(['create', 'destroy']);
+    //profile routes
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', 'ProfileController@index')->name('profile.index');
+        Route::put('/', 'ProfileController@update')->name('profile.update');
+    });
 });
 
 //all ajax data routes

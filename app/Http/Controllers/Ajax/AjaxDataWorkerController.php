@@ -68,8 +68,8 @@ class AjaxDataWorkerController extends Controller
             return Datatables::eloquent($data)
                 ->addIndexColumn()
                 ->addColumn('actions', function($data){
-                    $routeEdit = route('superadmin.workers.edit',$data->id);
-                    $routeDelete = route('superadmin.workers.destroy',$data->id);
+                    $routeEdit = route('admin.workers.edit',$data->id);
+                    $routeDelete = route('admin.workers.destroy',$data->id);
 
                     $actionBtn = '<a class="btn btn-primary btn-sm" href="'.$routeEdit.'">Edit</a> <button class="btn btn-danger btn-sm remove-user" data-id="'.$data->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$data->id.')"> Delete</button>';
 

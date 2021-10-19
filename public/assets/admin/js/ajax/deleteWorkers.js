@@ -1,6 +1,6 @@
-function deleteConfirmation(id, workers) {
+function deleteConfirmation(id) {
     swal({
-        title: "Delete " + workers + " data",
+        title: "Delete worker data",
         text: "Are you sure to delete this data?",
         type: "warning",
         showCancelButton: !0,
@@ -12,15 +12,14 @@ function deleteConfirmation(id, workers) {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
                 type: 'POST',
-                url: "/admin/workers/" + workers + "/" + id,
-                cache: false,
+                url: "/admin/workers/" + id,
                 data: {_token: CSRF_TOKEN, _method: 'DELETE'},
                 dataType: 'JSON',
                 success: function (results) {
                     if (results.success === true) {
                         swal("Done!", results.message, "success");
                         window.setTimeout(function(){ 
-                            window.location.replace('/admin/workers/' + workers);
+                            window.location.replace('/admin/workers');
                         } ,2000);
                     } else {
                         swal("Error!", results.message, "error");

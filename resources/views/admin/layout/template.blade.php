@@ -71,6 +71,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Workers Menu :</h6>
+            <a class="collapse-item" href="/admin/workers/create">Add New Worker</a>
             <a class="collapse-item" href="/admin/workers/">Workers List</a>
           </div>
         </div>
@@ -89,9 +90,9 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Work list menu :</h6>
-            <a class="collapse-item" href="/admin/work-list/approved">Approved</a>
-            <a class="collapse-item" href="/admin/work-list/pending">Pending</a>
-            <a class="collapse-item" href="/admin/work-list/rejected">Disapproved</a>
+            <a class="collapse-item" href="/admin/work/pending">Pending</a>
+            <a class="collapse-item" href="/admin/work/approved">Approved</a>
+            <a class="collapse-item" href="/admin/work/disapproved">Disapproved</a>
           </div>
         </div>
       </li>

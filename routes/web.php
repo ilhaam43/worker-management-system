@@ -36,6 +36,16 @@ Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'App\Http\Controll
     Route::get('/', 'DashboardController@index')->name('dashboard');
     //all worker management routes
     Route::resource('workers', 'WorkerController');
+    //all work data management route
+    Route::group(['as'=>'work.', 'prefix' => 'work'], function () {
+        Route::get('/approved', 'WorkController@approved')->name('approved');
+        Route::get('/pending', 'WorkController@pending')->name('pending');
+        Route::get('/disapproved', 'WorkController@disapproved')->name('disapproved');
+        Route::post('/approve', 'WorkController@approveWork')->name('approve');
+        Route::post('/disapprove', 'WorkController@disapproveWork')->name('disapprove');
+        Route::get('/detail/{id}', 'WorkController@edit')->name('edit');
+        Route::put('/detail/{id}', 'WorkController@update')->name('update');
+    });
 });
 
 Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Controllers\Workers','middleware'=>['auth','worker']], function () {
@@ -55,11 +65,19 @@ Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Contro
 
 //all ajax data routes
 Route::group(['as'=>'data.','prefix' => 'data', 'namespace'=>'App\Http\Controllers\Ajax'], function () {
+    //admin data ajax
     Route::get('/admin/', 'AjaxDataAdminController@index')->name('admin');
+    //worker data ajax
     Route::get('/worker/', 'AjaxDataWorkerController@index')->name('worker');
     Route::get('/worker/categories', 'AjaxDataWorkerController@workerByCategory')->name('worker.category');
     Route::post('/worker/block', 'AjaxDataWorkerController@blockWorkers')->name('worker.block');
+    //my work data ajax in worker page
     Route::get('/my-work/', 'AjaxDataMyWorkController@index')->name('my_work');
+    //work data ajax in admin page
+    Route::get('/work/approved', 'AjaxDataWorkController@approved')->name('work.approved');
+    Route::get('/work/pending', 'AjaxDataWorkController@pending')->name('work.pending');
+    Route::get('/work/disapproved', 'AjaxDataWorkController@disapproved')->name('work.disapproved');
+    //validation ajax route in worker page
     Route::post('/validation/website', 'AjaxDataMyWorkValidationController@website')->name('validation.website');
     Route::post('/validation/email', 'AjaxDataMyWorkValidationController@email')->name('validation.email');
 });

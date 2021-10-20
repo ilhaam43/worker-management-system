@@ -1,10 +1,10 @@
-function removeConfirmation() {
+function approveConfirmation() {
     swal({
-        title: "Remove reports data",
-        text: "Are you sure to remove this reports?",
+        title: "Approve researches data",
+        text: "Are you sure to approve this data?",
         type: "warning",
         showCancelButton: !0,
-        confirmButtonText: "Remove",
+        confirmButtonText: "Approve",
         cancelButtonText: "Cancel",
         reverseButtons: !0
     }).then(function (e) {
@@ -13,7 +13,7 @@ function removeConfirmation() {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
             $(':checkbox:checked').each(function(i){
-                id[i] = $(this).attr('id');
+                id[i] = $(this).val();
             });
 
             if(id.length === 0) {
@@ -21,7 +21,7 @@ function removeConfirmation() {
             }else{
             $.ajax({
                 type: 'POST',
-                url: "/admin/reports/multiremove",
+                url: "/admin/work/approve",
                 cache: false,
                 data: {_token: CSRF_TOKEN, id:id},
                 dataType: 'JSON',
@@ -30,7 +30,7 @@ function removeConfirmation() {
                         for(var i=0; i<id.length; i++){
                             swal("Done!", results.message, "success");
                             $('tr#'+id[i]+'').css('background-color', '#ccc');
-                            $('tr#'+id[i]+'').fadeOut('slow');
+                            $('tr#'+id[i]+'').remove();
                         }
                     } else {
                         swal("Error!", results.message, "error");

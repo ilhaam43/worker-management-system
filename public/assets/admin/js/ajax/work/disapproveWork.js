@@ -1,10 +1,10 @@
-function blacklistConfirmation() {
+function rejectConfirmation() {
     swal({
-        title: "Blacklist researches data",
-        text: "Are you sure to blacklist this data?",
+        title: "Reject researches data",
+        text: "Are you sure to reject this data?",
         type: "warning",
         showCancelButton: !0,
-        confirmButtonText: "Blacklist",
+        confirmButtonText: "Reject",
         cancelButtonText: "Cancel",
         reverseButtons: !0
     }).then(function (e) {
@@ -21,7 +21,7 @@ function blacklistConfirmation() {
             }else{
             $.ajax({
                 type: 'POST',
-                url: "/admin/researches/blacklist",
+                url: "/admin/work/disapprove",
                 cache: false,
                 data: {_token: CSRF_TOKEN, id:id},
                 dataType: 'JSON',

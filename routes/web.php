@@ -46,6 +46,8 @@ Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'App\Http\Controll
         Route::get('/detail/{id}', 'WorkController@edit')->name('edit');
         Route::put('/detail/{id}', 'WorkController@update')->name('update');
     });
+    //all photo data management route
+    Route::resource('photos', 'PhotoController')->only(['index', 'destroy', 'store']);
 });
 
 Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Controllers\Workers','middleware'=>['auth','worker']], function () {

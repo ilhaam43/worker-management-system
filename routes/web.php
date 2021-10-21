@@ -48,6 +48,8 @@ Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'App\Http\Controll
     });
     //all photo data management route
     Route::resource('photos', 'PhotoController')->only(['index', 'destroy', 'store']);
+    //general data management route
+    Route::resource('settings', 'SettingController')->only(['index', 'edit', 'update']);
 });
 
 Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Controllers\Workers','middleware'=>['auth','worker']], function () {

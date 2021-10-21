@@ -8,8 +8,8 @@ class PhotoService
     public function storePhoto($request)
     {
         $name = $request->file('photo_image')->getClientOriginalName();
-        $uploadPhoto = $request->photo_image->move(public_path('admin/img/photos'), $name);
-        $request['photo_url'] = 'admin/img/photos/' . $name;
+        $uploadPhoto = $request->photo_image->move(public_path('admins/img/photos'), $name);
+        $request['photo_url'] = 'admins/img/photos/' . $name;
         $store = Photo::create($request->except('photo_image'));
 
         return $store;

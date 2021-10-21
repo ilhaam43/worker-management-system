@@ -45,7 +45,7 @@ class DashboardController extends Controller
     public function showMessage()
     {
         $auth = Auth::user();
-        $message = Setting::where('id', 4)->first();
+        $message = Setting::where('id', 2)->first();
 
         $updateMessage = WorkerNotification::where('user_id', $auth->id)->update(['message' => 0]);
 
@@ -55,7 +55,7 @@ class DashboardController extends Controller
     public function showNotice()
     {
         $auth = Auth::user();
-        $researchNotice = Setting::where('id', 7)->first();
+        $researchNotice = Setting::where('id', 3)->first();
 
         $updateNotice = WorkerNotification::where('user_id', $auth->id)->update(['notice' => 0]);
 

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Worker;
+use App\Models\WorkerNotification;
 
 class WorkerService
 {
@@ -27,7 +28,16 @@ class WorkerService
                 'userable_id' => $worker->id
         ]);
 
-        return $storeUser;
+        $getUserId = User::where('email', $request['email'])->first();
+
+        $addWorkerNotifications = WorkerNotification::create([
+                'user_id' => $getUserId->id,
+                'how_to_work' => true,
+                'message'    => true,
+                'notice' => true
+        ]);
+
+        return $addWorkerNotifications;
     }
 
     public function updateWorker($request, $id)

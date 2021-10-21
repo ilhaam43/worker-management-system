@@ -106,7 +106,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="/admin/setting">
+        <a class="nav-link" href="/admin/settings">
           <i class="fas fa-fw fa-cog"></i>
           <span>General</span></a>
       </li>

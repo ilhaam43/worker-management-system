@@ -40,7 +40,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-users"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Worker APP<sup></sup></div>
+        <div class="sidebar-brand-text mx-3">Dashboard<sup></sup></div>
       </a>
 
       <!-- Divider -->

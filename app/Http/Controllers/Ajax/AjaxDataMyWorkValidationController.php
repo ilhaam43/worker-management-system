@@ -24,7 +24,9 @@ class AjaxDataMyWorkValidationController extends Controller
         }
 
         $productCategoryId = Auth::user()->product_category_id;
-        $validateWebsiteData = Job::where('product_category_id', $productCategoryId)->where('company_website', $request['company_website'])->get();
+        $urlFilter = preg_replace('/\b(?:(?:https?|ftp):\/\/|www\.)/', '', $request['company_website']); //regex for filter url
+        $urlFix = rtrim($urlFilter,"/");
+        $validateWebsiteData = Job::where('company_website', 'LIKE','%'.$urlFix.'%')->where('product_category_id', $productCategoryId)->get();
 
         if(count($validateWebsiteData) > 0){
             return response()->json(['success' => false, 'empty' => false, 'message' => "Website Data Already Exists"], 200);

@@ -9,7 +9,9 @@ class MyWorkService
 {
     public function storeWork($request)
     {
-        $checkUrl = Job::where('product_category_id', $request['product_category_id'])->where('company_website', $request['company_website'])->get();
+        $urlFilter = preg_replace('/\b(?:(?:https?|ftp):\/\/|www\.)/', '', $request['company_website']); //regex for filter url
+        $urlFix = rtrim($urlFilter,"/");
+        $checkUrl = Job::where('company_website', 'LIKE','%'.$urlFix.'%')->where('product_category_id', $request['product_category_id'])->get();
         $checkEmail = Job::where('product_category_id', $request['product_category_id'])->where('company_email', $request['company_email'])->get();
         
         if(count($checkUrl) > 0){
@@ -29,7 +31,9 @@ class MyWorkService
     public function updateWork($request, $id)
     {
         $job = Job::find($id);
-        $checkUrl = Job::where('product_category_id', $job->product_category_id)->where('company_website', $request['company_website'])->get();
+        $urlFilter = preg_replace('/\b(?:(?:https?|ftp):\/\/|www\.)/', '', $request['company_website']); //regex for filter url
+        $urlFix = rtrim($urlFilter,"/");
+        $checkUrl = Job::where('company_website', 'LIKE','%'.$urlFix.'%')->where('product_category_id', $request['product_category_id'])->get();
         $checkEmail = Job::where('product_category_id', $job->product_category_id)->where('company_email', $request['company_email'])->get();
         
         if($request['company_website'] !== $job->company_website || $request['company_email'] !== $job->company_email){

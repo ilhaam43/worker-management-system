@@ -13,9 +13,9 @@ class SettingService
             if($id == '1') {
                 $updateHowWork = DB::table('workers_notifications')->update(['how_to_work' => 1]);
             } elseif($id == '2') {
-                $updateMessage = $workerNotifications->update(['message' => 1]);
+                $updateMessage = DB::table('workers_notifications')->update(['message' => 1]);
             } elseif($id == '3') {
-                $updateNotice = $workerNotifications->update(['notice' => 1]);
+                $updateNotice = DB::table('workers_notifications')->update(['notice' => 1]);
             } 
 
             $updateSetting = Setting::find($id)->update($request->all());

@@ -30,7 +30,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $worker = count(User::where('userable_type', 'App\Models\Worker')->where('product_category_id', $user->product_category_id)->get()); 
-        $totalWork = count(Job::where('product_category_id', $user->product_category_id)->get());
+        $totalWork = count(Job::where('product_category_id', $user->product_category_id)->where('job_status_id', 1)->get());
         $totalWorkPending = count(Job::where('product_category_id', $user->product_category_id)->where('job_status_id', 3)->get());
 
         return view('admin.index', compact('worker','totalWork','totalWorkPending'));

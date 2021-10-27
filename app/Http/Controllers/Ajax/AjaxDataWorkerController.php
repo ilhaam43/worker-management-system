@@ -42,7 +42,7 @@ class AjaxDataWorkerController extends Controller
 
                     return $datas['user_status']['status'];
                 })->addColumn('worker_quantity', function($data){
-                    $job = count(Job::where('user_id', $data->id)->get());
+                    $job = count(Job::where('user_id', $data->id)->where('job_status_id', 1)->get());
 
                     return $job;
                 })->addColumn('category', function($data){
@@ -82,7 +82,7 @@ class AjaxDataWorkerController extends Controller
 
                     return $datas['user_status']['status'];
                 })->addColumn('worker_quantity', function($data){
-                    $job = count(Job::where('user_id', $data->id)->get());
+                    $job = count(Job::where('user_id', $data->id)->where('job_status_id', 1)->get());
 
                     return $job;
                 })->addColumn('category', function($data){

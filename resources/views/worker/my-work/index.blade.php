@@ -89,7 +89,7 @@
         </div>
         <div class="form-group">
           <label for="name">Email :</label>
-          <input type="email" name="company_email" class="form-control" id="company_email" required onblur="checkEmail()">
+          <input type="text" name="company_email" class="form-control" id="company_email" required onblur="checkEmail()">
         </div>
         <div class="form-group">
           <label for="name">Screenshot :</label>

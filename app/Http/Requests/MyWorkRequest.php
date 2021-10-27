@@ -30,7 +30,7 @@ class MyWorkRequest extends FormRequest
         return [
             'country_id'            => 'required',
             'company_website'       => 'required',
-            'company_email'         => 'required|email',
+            'company_email'         => 'required',
         ];
     }
 }

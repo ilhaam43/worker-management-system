@@ -24,6 +24,7 @@
                 { data: 'company_email', name: 'company_email'},
                 { data: 'country.country_name', name: 'Country.country_name'},
                 { data: 'remark', name: 'remark'},
+                { data: 'user.name', name: 'User.name'},
                 { data: 'screenshot', name: 'screenshot'},
                 
                 {

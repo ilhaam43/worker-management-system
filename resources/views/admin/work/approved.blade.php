@@ -40,6 +40,7 @@
                     <th>Email</th>
                     <th>Country</th>
                     <th>Remark</th>
+                    <th>Worker</th>
                     <th>Screenshot</th>
                     <th>Action</th>
                 </tr>

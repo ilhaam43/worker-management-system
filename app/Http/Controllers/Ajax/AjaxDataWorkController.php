@@ -22,7 +22,7 @@ class AjaxDataWorkController extends Controller
         if ($request->ajax()) {
             $auth = Auth::user();
 
-            $data = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 1)->with('Country', 'JobStatus')->select('jobs.*');
+            $data = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 1)->with('Country', 'JobStatus', 'User')->select('jobs.*');
             
             return Datatables::eloquent($data)
                 ->addIndexColumn()
@@ -56,7 +56,7 @@ class AjaxDataWorkController extends Controller
         if ($request->ajax()) {
             $auth = Auth::user();
 
-            $data = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 3)->with('Country', 'JobStatus')->select('jobs.*');
+            $data = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 3)->with('Country', 'JobStatus', 'User')->select('jobs.*');
 
             return Datatables::eloquent($data)
                 ->addIndexColumn()
@@ -90,7 +90,7 @@ class AjaxDataWorkController extends Controller
         if ($request->ajax()) {
             $auth = Auth::user();
 
-            $data = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 2)->with('Country', 'JobStatus')->select('jobs.*');
+            $data = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 2)->with('Country', 'JobStatus', 'User')->select('jobs.*');
             
             return Datatables::eloquent($data)
                 ->addIndexColumn()

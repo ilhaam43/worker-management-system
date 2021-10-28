@@ -53,6 +53,10 @@ class LoginController extends Controller
     
             if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
             {
+                if(auth()->user()->status_id == 2){
+                    auth()->logout();
+                    return back()->with('error',"Your account has been blocked please contact admin");
+                }
                 if (auth()->user()->userable_type == 'App\Models\SuperAdmin') {
                     return redirect('superadmin');
                 }elseif (auth()->user()->userable_type == 'App\Models\Admin') {

@@ -67,11 +67,10 @@ class DashboardController extends Controller
         $auth = Auth::user();
         $worker = Worker::where('id', $auth->userable_id)->first();
 
-        $jobQuantity = count(Job::where('user_id', $auth->id)->get());
-        $jobPaid = $worker->quantity_jobs_paid;
+        $jobPaid = count(Job::where('user_id', $auth->id)->where('job_status_id', 1)->get());
         $amountPaid = $worker->amount_paid;
 
-        return view('worker.payments', compact('jobQuantity', 'jobPaid', 'amountPaid'));
+        return view('worker.payments', compact('jobPaid', 'amountPaid'));
     }
 
     public function showQuantity()

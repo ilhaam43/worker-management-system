@@ -27,52 +27,54 @@
         <form method="POST" action="{{ route('admin.work.update', $job->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        @if($job->screenshot_url !== NULL)
-        <div class="row">
-            <div class="form-group col-md-12 text-center">
-            <label>Screenshot :</label>
-            </br>
-            <img src="{{asset($job->screenshot_url)}}" width="400" height="300"></img>
-            </div>
-        </div>
-        @endif
-        <div class="row">
-            <div class="form-group col-md-4">
-                <label>Email :</label>
-                <input type="text" class="form-control" name="company_email" value="{{$job->company_email}}"> 
-            </div>
-            <div class="form-group col-md-4">
-                <label>Website :</label>
-                <input type="text" class="form-control" name="company_website" placeholder="Enter your name" value="{{$job->company_website}}">
-            </div>
-            <div class="form-group col-md-4">
-                <label>Remark :</label>
-                <input type="text" class="form-control" name="remark" value="{{$job->remark}}"> 
-            </div>
-        </div>
 
         <div class="row">
-        <div class="form-group col-md-6">
-        <label>Country :</label>
-                    <select type="text" class="form-control" name="country_id">
-                        @foreach($listCountries as $countries) 
-                            <option value="{{$countries->id}}" {{ ( $countries->id == $job->country_id) ? 'selected' : '' }}>{{$countries->country_name}}</option>
-                        @endforeach
-                    </select>
+                <div class="form-group col-md-6">
+                    <label>Screenshot :</label>
+                    </br>
+                    <img src="{{asset($job->screenshot_url ? $job->screenshot_url : 'https://via.placeholder.com/450x400.png?text=No%20Image')}}" width="450" height="400"></img>
+                </div>
+
+            <div class="form-group col-md-6">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Email :</label>
+                        <input type="text" class="form-control" name="company_email" value="{{$job->company_email}}"> 
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Website :</label>
+                        <input type="text" class="form-control" name="company_website" placeholder="Enter your name" value="{{$job->company_website}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>Remark :</label>
+                        <input type="text" class="form-control" name="remark" value="{{$job->remark}}"> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Country :</label>
+                        <select type="text" class="form-control" name="country_id">
+                            @foreach($listCountries as $countries) 
+                                <option value="{{$countries->id}}" {{ ( $countries->id == $job->country_id) ? 'selected' : '' }}>{{$countries->country_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Status :</label>
+                            <select type="text" class="form-control" name="job_status_id">
+                                @foreach($jobsStatus as $jobsStatuses) 
+                                    <option value="{{$jobsStatuses->id}}" {{ ( $jobsStatuses->id == $job->job_status_id) ? 'selected' : '' }}>{{$jobsStatuses->status}}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                </div>
             </div>
 
-        <div class="form-group col-md-6">
-        <label>Status :</label>
-                    <select type="text" class="form-control" name="job_status_id">
-                        @foreach($jobsStatus as $jobsStatuses) 
-                            <option value="{{$jobsStatuses->id}}" {{ ( $jobsStatuses->id == $job->job_status_id) ? 'selected' : '' }}>{{$jobsStatuses->status}}</option>
-                        @endforeach
-                    </select>
-            </div>
         </div>
 
-
-        <a href="{{url('admin/work')}}" class="btn btn-danger">Cancel</a>
+        <a href="{{url('admin/work/pending')}}" class="btn btn-danger">Cancel</a>
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
             </div>

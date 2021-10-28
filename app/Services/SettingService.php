@@ -10,11 +10,13 @@ class SettingService
     public function updateSetting($request, $id)
     {
             //check id setting for dynamicly notifications
-            if($id == '1') {
+            $setting = Setting::findOrFail($id);
+            
+            if($setting->setting_name == 'How To Work') {
                 $updateHowWork = DB::table('workers_notifications')->update(['how_to_work' => 1]);
-            } elseif($id == '2') {
+            } elseif($setting->setting_name == 'Template Message') {
                 $updateMessage = DB::table('workers_notifications')->update(['message' => 1]);
-            } elseif($id == '3') {
+            } elseif($setting->setting_name == 'Notice') {
                 $updateNotice = DB::table('workers_notifications')->update(['notice' => 1]);
             } 
 

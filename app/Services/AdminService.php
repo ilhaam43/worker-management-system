@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Setting;
 
 class AdminService
 {
@@ -16,6 +17,8 @@ class AdminService
 
         $admin = Admin::where('name', $request['name'])->first();
 
+        $checkCategory = count(Setting::where('product_category_id', $request['product_category_id'])->get());
+
         $storeUser = User::create([
                 'status_id' => $request['status_id'],
                 'product_category_id' =>  $request['product_category_id'],
@@ -26,6 +29,27 @@ class AdminService
                 'userable_type' => 'App\Models\Admin',
                 'userable_id' => $admin->id
         ]);
+
+        if($checkCategory == 0) //create settings per product category
+        {
+            $createHowToWork = Setting::create([
+                'product_category_id' =>  $request['product_category_id'],
+                'setting_name'        => 'How To Work',
+                'setting_description' => 'How To Work',
+            ]);
+
+            $createTemplateMessage = Setting::create([
+                'product_category_id' =>  $request['product_category_id'],
+                'setting_name'        => 'Template Message',
+                'setting_description' => 'Template Message',
+            ]);
+
+            $createNotice = Setting::create([
+                'product_category_id' =>  $request['product_category_id'],
+                'setting_name'        => 'Notice',
+                'setting_description' => 'Notice',
+            ]);
+        }
 
         return $storeUser;
     }

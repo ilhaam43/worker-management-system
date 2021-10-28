@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_category_id')->nullable()->constrained('product_category');
+            $table->foreignId('product_category_id')->nullable()->constrained('product_category')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('status_id')->constrained('users_status');
             $table->foreignId('country_id')->constrained('country');
             $table->unsignedBigInteger('userable_id');

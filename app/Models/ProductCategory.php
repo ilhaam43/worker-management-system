@@ -20,4 +20,9 @@ class ProductCategory extends Model
     public function jobs(){
         return $this->hasMany(Job::class, 'product_category_id', 'id');
     }
+
+    public function settings()
+    {
+        return $this->hasMany(Setting::class, 'product_category_id', 'id');
+    }
 }

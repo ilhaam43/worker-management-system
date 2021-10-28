@@ -35,7 +35,7 @@ class DashboardController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        $howWeWork = Setting::where('id', 1)->first();
+        $howWeWork = Setting::where('product_category_id', $auth->product_category_id)->where('setting_name', 'How To Work')->first();
         
         $updateWeWork = WorkerNotification::where('user_id', $auth->id)->update(['how_to_work' => 0]);
 
@@ -45,7 +45,7 @@ class DashboardController extends Controller
     public function showMessage()
     {
         $auth = Auth::user();
-        $message = Setting::where('id', 2)->first();
+        $message = Setting::where('product_category_id', $auth->product_category_id)->where('setting_name', 'Template Message')->first();
 
         $updateMessage = WorkerNotification::where('user_id', $auth->id)->update(['message' => 0]);
 
@@ -55,7 +55,7 @@ class DashboardController extends Controller
     public function showNotice()
     {
         $auth = Auth::user();
-        $researchNotice = Setting::where('id', 3)->first();
+        $researchNotice = Setting::where('product_category_id', $auth->product_category_id)->where('setting_name', 'Notice')->first();
 
         $updateNotice = WorkerNotification::where('user_id', $auth->id)->update(['notice' => 0]);
 

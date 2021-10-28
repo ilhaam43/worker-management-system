@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SettingRequest;
 use App\Services\SettingService;
 
@@ -31,7 +32,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $setting = Setting::all();
+        $auth = Auth::user();
+        $setting = Setting::where('product_category_id', $auth->product_category_id)->get();
         return view('admin.setting.index', compact('setting'))->with('i');
     }
 

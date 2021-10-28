@@ -35,7 +35,7 @@
           <div class="form-row">
             <div class="col-sm-12">
               <label for="name"><b>Setting Name :</label></b>
-              <input type="text" class="form-control" placeholder="Setting Name" name="setting_name" value="{{$setting->setting_name}}" required>
+              <input type="text" class="form-control" placeholder="Setting Name" name="setting_name" value="{{$setting->setting_name}}" disabled>
             </div>
             <div class="col-sm-12">
               </br>

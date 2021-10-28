@@ -14,4 +14,9 @@ class Setting extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function productCategory()
+    {
+        return $this->belongsTo(ProductCategory::class);
+    }
 }

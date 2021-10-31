@@ -68,7 +68,7 @@ class WorkerController extends Controller
     {
         $worker = User::where('id', $id)->where('userable_type', 'App\Models\Worker')->first();
         $workerDetails = Worker::where('id', $worker->userable_id)->first();
-        $countJobs = count(Job::where('user_id', $id)->get());
+        $countJobs = count(Job::where('user_id', $id)->where('job_status_id',1)->get());
 
         if(!$worker){
             return redirect()->route('admin.workers.index');

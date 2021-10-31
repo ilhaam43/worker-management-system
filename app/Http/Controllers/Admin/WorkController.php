@@ -14,6 +14,8 @@ use App\Models\Job;
 use App\Models\JobStatus;
 use App\Models\Country;
 use App\Models\ProductCategory;
+use App\Exports\ExcelApprovedWork;
+use Excel;
 
 class WorkController extends Controller
 {
@@ -91,5 +93,14 @@ class WorkController extends Controller
             return back()->withError('Work data failed to update because work data cannot be duplicated');
         }
         return redirect()->route('admin.work.pending')->with('success', 'Work data updated successfully');
+    }
+
+    public function exportExcelApproved()
+    {
+        $auth = Auth::user();
+        $i = 0;
+
+        $listApprovedWork = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 1)->with('Country')->get();
+        return Excel::download(new ExcelApprovedWork($listApprovedWork, $i), 'work_approved.xlsx');
     }
 }

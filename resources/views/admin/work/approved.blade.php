@@ -30,6 +30,8 @@
         <h6 class="m-0 font-weight-bold text-primary">Approved Work List</h6>
       </div>
       <div class="card-body">
+      <a href="{{route('admin.work.export.excel.approved')}}" class="btn btn-success btn-sm" style="float: right; margin-right:10px;" id="export" class="main"><i class="fa fa-file-excel"></i> Export Excel</a>
+      </br></br>
         <div class="table-responsive">
           <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
             <thead>

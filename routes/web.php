@@ -41,6 +41,7 @@ Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'App\Http\Controll
         Route::get('/approved', 'WorkController@approved')->name('approved');
         Route::get('/pending', 'WorkController@pending')->name('pending');
         Route::get('/disapproved', 'WorkController@disapproved')->name('disapproved');
+        Route::get('/export-excel-approved', 'WorkController@exportExcelApproved')->name('export.excel.approved');
         Route::post('/approve', 'WorkController@approveWork')->name('approve');
         Route::post('/disapprove', 'WorkController@disapproveWork')->name('disapprove');
         Route::get('/detail/{id}', 'WorkController@edit')->name('edit');

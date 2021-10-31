@@ -29,13 +29,13 @@
         @method('PUT')
 
         <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-7">
                     <label>Screenshot :</label>
                     </br>
-                    <img src="{{asset($job->screenshot_url ? $job->screenshot_url : 'https://via.placeholder.com/450x400.png?text=No%20Image')}}" width="450" height="400"></img>
+                    <img src="{{asset($job->screenshot_url ? $job->screenshot_url : 'https://via.placeholder.com/450x400.png?text=No%20Image')}}" width="550" height="450"></img>
                 </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-5">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label>Email :</label>

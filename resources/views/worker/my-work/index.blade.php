@@ -106,7 +106,7 @@
         <div class="form-group">
           <label for="name">Remark :</label>
           <input type="text" name="remark" class="form-control" id="remark">
-          <small id="remark-notes" class="form-text text-muted"> Notes : if remark not available just leave empty in remark form.</small>
+          <small id="remark-notes" class="form-text text-muted"> Notes : if there is no remark content, just leave empty here </small>
         </div>
 
         </div>

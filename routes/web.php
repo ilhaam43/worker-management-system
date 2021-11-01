@@ -34,6 +34,8 @@ Route::group(['as'=>'superadmin.','prefix' => 'superadmin','namespace'=>'App\Htt
 
 Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'App\Http\Controllers\Admin','middleware'=>['auth','admin']], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/profile', 'ProfileController@index')->name('profile.index');
+    Route::put('/profile', 'ProfileController@update')->name('profile.update');
     //all worker management routes
     Route::resource('workers', 'WorkerController');
     //all work data management route

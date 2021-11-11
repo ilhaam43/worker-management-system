@@ -81,6 +81,7 @@
         <div class="modal-body">
         <form method="POST" action="{{route('admin.photos.store')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
+        <input type="hidden" name="product_category_id" value="{{Auth::user()->product_category_id}}">
         <div class="form-group">
           <label for="name"><b>Photo Name :</label></b>
           <input type="text" name="photo_name" class="form-control" id="photo_name" required>

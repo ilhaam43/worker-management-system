@@ -30,6 +30,10 @@
         <h6 class="m-0 font-weight-bold text-primary">Approved Work List</h6>
       </div>
       <div class="card-body">
+      <button type="button" class="btn btn-primary btn-sm" id="selectAll" class="main"><i class="fa fa-check-circle"></i> Select All</button>
+      <button type="button" class="btn btn-info btn-sm" id="openAll" class="main"><i class="fa fa-eye"></i> Open All</button>
+      <button type="button" class="btn btn-danger btn-sm" style="float: right; margin-right:10px;" id="reject" class="main" onclick="rejectConfirmation()"><i class="fa fa-times"></i> Disapprove All</button>
+      <button type="button" class="btn btn-success btn-sm" style="float: right; margin-right:10px;" id="approve" class="main" onclick="approveConfirmation()"><i class="fa fa-check"></i> Approve All</button>
       <a href="{{route('admin.work.export.excel.approved')}}" class="btn btn-success btn-sm" style="float: right; margin-right:10px;" id="export" class="main"><i class="fa fa-file-excel"></i> Export Excel</a>
       </br></br>
         <div class="table-responsive">
@@ -61,6 +65,6 @@
     
 @endsection
 </body>
-
+@include('admin.javascript.work.openAllWork')
 @include('admin.javascript.work.showApprovedWork')
 </html>

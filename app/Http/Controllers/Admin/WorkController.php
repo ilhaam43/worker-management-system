@@ -39,7 +39,9 @@ class WorkController extends Controller
      */
     public function approved()
     {
-        return view('admin.work.approved');
+        $auth = Auth::user();
+        $job = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 1)->get();
+        return view('admin.work.approved', compact('job'))->with('i');
     }
 
     public function pending()
@@ -51,7 +53,9 @@ class WorkController extends Controller
 
     public function disapproved()
     {
-        return view('admin.work.disapproved');
+        $auth = Auth::user();
+        $job = Job::where('product_category_id', $auth->product_category_id)->where('job_status_id', 2)->get();
+        return view('admin.work.disapproved', compact('job'))->with('i');
     }
 
     public function approveWork(Request $request)

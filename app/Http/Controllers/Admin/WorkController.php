@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\UserStatus;
 use App\Models\Worker;
 use App\Models\Job;
+use App\Models\JobFormSetting;
 use App\Models\JobStatus;
 use App\Models\Country;
 use App\Models\ProductCategory;
@@ -78,15 +79,17 @@ class WorkController extends Controller
 
     public function edit($id)
     {
+        $auth = Auth::user();
         $listCountries = Country::all();
         $jobsStatus = JobStatus::all();
+        $listForm = JobFormSetting::where('product_category_id', $auth->product_category_id)->first();
         $job = Job::where('id', $id)->with('Country', 'JobStatus')->first();
 
         if(!$job){
             return redirect()->route('admin.work.pending');
         }
 
-        return view('admin.work.edit', compact('job', 'listCountries', 'jobsStatus'))->with('i');
+        return view('admin.work.edit', compact('job', 'listCountries', 'jobsStatus', 'listForm'))->with('i');
     }
 
     public function update(Request $request, $id)

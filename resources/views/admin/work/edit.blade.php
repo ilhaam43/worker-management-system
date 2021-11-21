@@ -37,22 +37,35 @@
 
             <div class="form-group col-md-5">
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    @if($listForm->email == 1)
+                    <div class="form-group col-md-12">
                         <label>Email :</label>
                         <input type="text" class="form-control" name="company_email" value="{{$job->company_email}}"> 
                     </div>
-                    <div class="form-group col-md-6">
+                    @endif
+                    @if($listForm->website == 1)
+                    <div class="form-group col-md-12">
                         <label>Website :</label>
                         <input type="text" class="form-control" name="company_website" placeholder="Enter your name" value="{{$job->company_website}}">
                     </div>
+                    @endif
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-12">
+                    @if($listForm->remark == 1)
+                    <div class="form-group col-md-6">
                         <label>Remark :</label>
                         <input type="text" class="form-control" name="remark" value="{{$job->remark}}"> 
                     </div>
+                    @endif
+                    @if($listForm->text == 1)
+                    <div class="form-group col-md-6">
+                        <label>Text :</label>
+                        <input type="text" class="form-control" name="text" value="{{$job->text}}"> 
+                    </div>
+                    @endif
                 </div>
                 <div class="row">
+                    @if($listForm->country == 1)
                     <div class="form-group col-md-6">
                         <label>Country :</label>
                         <select type="text" class="form-control" name="country_id">
@@ -61,7 +74,30 @@
                             @endforeach
                         </select>
                     </div>
+                    @endif
+                    @if($listForm->name == 1)
                     <div class="form-group col-md-6">
+                        <label>Name :</label>
+                        <input type="text" class="form-control" name="name" value="{{$job->name}}"> 
+                    </div>
+                    @endif
+                </div>
+                <div class="row">
+                    @if($listForm->number == 1)
+                    <div class="form-group col-md-6">
+                        <label>Number :</label>
+                        <input type="text" class="form-control" name="number" value="{{$job->number}}"> 
+                    </div>
+                    @endif
+                    @if($listForm->link == 1)
+                    <div class="form-group col-md-6">
+                        <label>Link :</label>
+                        <input type="text" class="form-control" name="link" value="{{$job->link}}"> 
+                    </div>
+                    @endif
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
                         <label>Status :</label>
                             <select type="text" class="form-control" name="job_status_id">
                                 @foreach($jobsStatus as $jobsStatuses) 
@@ -70,6 +106,7 @@
                             </select>
                     </div>
                 </div>
+
             </div>
 
         </div>

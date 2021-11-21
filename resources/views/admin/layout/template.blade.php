@@ -111,6 +111,13 @@
           <span>General</span></a>
       </li>
 
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/form-settings">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Form Settings</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

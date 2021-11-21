@@ -17,9 +17,13 @@
 
                 { data: 'company_website', name: 'company_website'},
                 { data: 'company_email', name: 'company_email'},
-                { data: 'country.country_name', name: 'Country.country_name'},
+                { data: 'country', name: 'country'},
                 { data: 'screenshot', name: 'screenshot'},
                 { data: 'remark', name: 'remark'},
+                { data: 'name', name: 'name'},
+                { data: 'number', name: 'number'},
+                { data: 'link', name: 'link'},
+                { data: 'text', name: 'text'},
                 { data: 'job_status.status', name: 'JobStatus.status'},
 
                 {

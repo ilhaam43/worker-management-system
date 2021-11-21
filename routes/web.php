@@ -53,6 +53,11 @@ Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'App\Http\Controll
     Route::resource('photos', 'PhotoController')->only(['index', 'destroy', 'store']);
     //general data management route
     Route::resource('settings', 'SettingController')->only(['index', 'edit', 'update']);
+    //form settings data management route
+    Route::group(['as'=>'form_settings.', 'prefix' => 'form-settings'], function () {
+        Route::get('/', 'FormSettingController@index')->name('index');
+        Route::post('/', 'FormSettingController@update')->name('update');
+    });
 });
 
 Route::group(['as'=>'worker.','prefix' => 'worker','namespace'=>'App\Http\Controllers\Workers','middleware'=>['auth','worker']], function () {
@@ -87,5 +92,9 @@ Route::group(['as'=>'data.','prefix' => 'data', 'namespace'=>'App\Http\Controlle
     //validation ajax route in worker page
     Route::post('/validation/website', 'AjaxDataMyWorkValidationController@website')->name('validation.website');
     Route::post('/validation/email', 'AjaxDataMyWorkValidationController@email')->name('validation.email');
+    Route::post('/validation/name', 'AjaxDataMyWorkValidationController@name')->name('validation.name');
+    Route::post('/validation/number', 'AjaxDataMyWorkValidationController@number')->name('validation.number');
+    Route::post('/validation/link', 'AjaxDataMyWorkValidationController@link')->name('validation.link');
+    Route::post('/validation/text', 'AjaxDataMyWorkValidationController@text')->name('validation.text');
 });
 

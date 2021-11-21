@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Setting;
+use App\Models\JobFormSetting;
 
 class AdminService
 {
@@ -18,6 +19,8 @@ class AdminService
         $admin = Admin::where('name', $request['name'])->first();
 
         $checkCategory = count(Setting::where('product_category_id', $request['product_category_id'])->get());
+
+        $checkJobFormSetting = count(JobFormSetting::where('product_category_id', $request['product_category_id'])->get());
 
         $storeUser = User::create([
                 'status_id' => $request['status_id'],
@@ -48,6 +51,22 @@ class AdminService
                 'product_category_id' =>  $request['product_category_id'],
                 'setting_name'        => 'Notice',
                 'setting_description' => 'Notice',
+            ]);
+        }
+
+        if($checkJobFormSetting == 0) //create job form setting per product category
+        {
+            $createJobFormSetting = JobFormSetting::create([
+                'product_category_id' =>  $request['product_category_id'],
+                'website' => 1,
+                'email' => 1,
+                'country' => 1,
+                'screenshot' => 1,
+                'remark' => 1,
+                'name' => 1,
+                'number' => 1,
+                'link' => 1,
+                'text' => 1
             ]);
         }
 

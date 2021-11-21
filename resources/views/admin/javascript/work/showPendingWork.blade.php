@@ -22,10 +22,14 @@
 
                 { data: 'company_website', name: 'company_website'},
                 { data: 'company_email', name: 'company_email'},
-                { data: 'country.country_name', name: 'Country.country_name'},
+                { data: 'country', name: 'country'},
                 { data: 'remark', name: 'remark'},
                 { data: 'user.name', name: 'User.name'},
                 { data: 'screenshot', name: 'screenshot'},
+                { data: 'name', name: 'name'},
+                { data: 'number', name: 'number'},
+                { data: 'link', name: 'link'},
+                { data: 'text', name: 'text'},
                 
                 {
                     data: 'action', 

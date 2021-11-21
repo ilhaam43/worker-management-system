@@ -51,4 +51,67 @@ class AjaxDataMyWorkValidationController extends Controller
         return response()->json(['success' => true, 'empty' => false, 'message' => "Email Data Is Acceptable"], 200);
     }
 
+    public function name(Request $request)
+    {
+        if($request['name'] == ""){
+            return response()->json(['success' => false, 'empty' => true,  'message' => "Name Data Empty"], 200);
+        }
+
+        $productCategoryId = Auth::user()->product_category_id;
+        $validateNameData = Job::where('product_category_id', $productCategoryId)->where('name', $request['name'])->get();
+
+        if(count($validateNameData) > 0){
+            return response()->json(['success' => false, 'empty' => false, 'message' => "Name Data Already Exists"], 200);
+        }
+
+        return response()->json(['success' => true, 'empty' => false, 'message' => "Name Data Is Acceptable"], 200);
+    }
+
+    public function number(Request $request)
+    {
+        if($request['number'] == ""){
+            return response()->json(['success' => false, 'empty' => true,  'message' => "Number Data Empty"], 200);
+        }
+
+        $productCategoryId = Auth::user()->product_category_id;
+        $validateNumberData = Job::where('product_category_id', $productCategoryId)->where('number', $request['number'])->get();
+
+        if(count($validateNumberData) > 0){
+            return response()->json(['success' => false, 'empty' => false, 'message' => "Number Data Already Exists"], 200);
+        }
+
+        return response()->json(['success' => true, 'empty' => false, 'message' => "Number Data Is Acceptable"], 200);
+    }
+
+    public function link(Request $request)
+    {
+        if($request['link'] == ""){
+            return response()->json(['success' => false, 'empty' => true,  'message' => "Link Data Empty"], 200);
+        }
+
+        $productCategoryId = Auth::user()->product_category_id;
+        $validateLinkData = Job::where('product_category_id', $productCategoryId)->where('link', $request['link'])->get();
+
+        if(count($validateLinkData) > 0){
+            return response()->json(['success' => false, 'empty' => false, 'message' => "Link Data Already Exists"], 200);
+        }
+
+        return response()->json(['success' => true, 'empty' => false, 'message' => "Link Data Is Acceptable"], 200);
+    }
+
+    public function text(Request $request)
+    {
+        if($request['text'] == ""){
+            return response()->json(['success' => false, 'empty' => true, 'message' => "Text Data Empty"], 200);
+        }
+
+        $productCategoryId = Auth::user()->product_category_id;
+        $validateTextData = Job::where('product_category_id', $productCategoryId)->where('text', $request['text'])->get();
+
+        if(count($validateTextData) > 0){
+            return response()->json(['success' => false, 'empty' => false, 'message' => "Text Data Already Exists"], 200);
+        }
+
+        return response()->json(['success' => true, 'empty' => false, 'message' => "Text Data Is Acceptable"], 200);
+    }
 }

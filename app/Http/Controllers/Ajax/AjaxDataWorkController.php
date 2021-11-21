@@ -43,8 +43,12 @@ class AjaxDataWorkController extends Controller
                     }
 
                     return $screenshotLink;
+                })->addColumn('country', function($data){
+                    $datas = json_decode($data, true);
+
+                    return $datas['country']['country_name'] ?? "";
                 })
-                ->rawColumns(['checkbox', 'action', 'screenshot'])->setRowId(function ($data) {
+                ->rawColumns(['checkbox', 'action', 'screenshot', 'country'])->setRowId(function ($data) {
                     return $data->id;
                 })
                 ->make(true);
@@ -77,8 +81,12 @@ class AjaxDataWorkController extends Controller
                     }
 
                     return $screenshotLink;
+                })->addColumn('country', function($data){
+                    $datas = json_decode($data, true);
+
+                    return $datas['country']['country_name'] ?? "";
                 })
-                ->rawColumns(['checkbox', 'action', 'screenshot'])->setRowId(function ($data) {
+                ->rawColumns(['checkbox', 'action', 'screenshot', 'country'])->setRowId(function ($data) {
                     return $data->id;
                 })
                 ->make(true);
@@ -111,8 +119,12 @@ class AjaxDataWorkController extends Controller
                     }
 
                     return $screenshotLink;
+                })->addColumn('country', function($data){
+                    $datas = json_decode($data, true);
+
+                    return $datas['country']['country_name'] ?? "";
                 })
-                ->rawColumns(['checkbox', 'action', 'screenshot'])->setRowId(function ($data) {
+                ->rawColumns(['checkbox', 'action', 'screenshot', 'country'])->setRowId(function ($data) {
                     return $data->id;
                 })
                 ->make(true);

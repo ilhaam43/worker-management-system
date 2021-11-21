@@ -30,4 +30,9 @@ class ProductCategory extends Model
     {
         return $this->hasMany(Photo::class, 'product_category_id', 'id');
     }
+
+    public function JobFormsetting()
+    {
+        return $this->belongsTo(JobFormSetting::class);
+    }
 }

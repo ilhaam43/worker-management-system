@@ -45,22 +45,27 @@
         @csrf
         @method('PUT')
         <div class="row">
+        @if($listForm->website == 1)
         <div class="form-group col-md-6">
                 <label>Company Website :</label>
                 <input type="text" class="form-control" name="company_website" placeholder="Enter your name" value="{{$listJobs->company_website}}" required>
         </div>
-        
+        @endif
+        @if($listForm->email == 1)
         <div class="form-group col-md-6">
                 <label>Company Email :</label>
                 <input type="text" class="form-control" name="company_email" value="{{$listJobs->company_email}}" required> 
             </div>
+        @endif
         </div>
-
         <div class="row">
+        @if($listForm->remark == 1)
         <div class="form-group col-md-6">
                 <label>Remark :</label>
                 <input type="text" class="form-control" name="remark" value="{{$listJobs->remark}}">
             </div>
+        @endif
+        @if($listForm->country == 1)
         <div class="form-group col-md-6">
         <label>Country :</label>
                     <select type="text" class="form-control" name="country_id">
@@ -69,8 +74,36 @@
                         @endforeach
                     </select>
             </div>
+        @endif
         </div>
-
+        <div class="row">
+        @if($listForm->name == 1)
+        <div class="form-group col-md-6">
+                <label>Name :</label>
+                <input type="text" class="form-control" name="name" value="{{$listJobs->name}}">
+            </div>
+        @endif
+        @if($listForm->number == 1)
+        <div class="form-group col-md-6">
+                <label>Number :</label>
+                <input type="text" class="form-control" name="number" value="{{$listJobs->number}}">
+            </div>
+        @endif
+        </div>
+        <div class="row">
+        @if($listForm->link == 1)
+        <div class="form-group col-md-6">
+                <label>Link :</label>
+                <input type="text" class="form-control" name="link" value="{{$listJobs->link}}">
+            </div>
+        @endif
+        @if($listForm->text == 1)
+        <div class="form-group col-md-6">
+                <label>Text :</label>
+                <input type="text" class="form-control" name="number" value="{{$listJobs->text}}">
+            </div>
+        @endif
+        </div>
         </br>
         <a href="{{url('worker/my-work')}}" class="btn btn-danger">Cancel</a>
         <button type="submit" class="btn btn-primary">Submit</button>

@@ -33,15 +33,19 @@ class AjaxDataMyWorkController extends Controller
                     return $actionBtn;
                 })->addColumn('screenshot', function($data){
                     if($data->screenshot_url == NULL){
-                        $screenshotLink = 'DELETED';
+                        $screenshotLink = 'NO';
                     }else{
                         $url = asset($data->screenshot_url);
                         $screenshotLink = '<a href="'.$url.'">Screenshot</a>';
                     }
 
                     return $screenshotLink;
+                })->addColumn('country', function($data){
+                    $datas = json_decode($data, true);
+
+                    return $datas['country']['country_name'] ?? "";
                 })
-                ->rawColumns(['action', 'screenshot'])->setRowId(function ($data) {
+                ->rawColumns(['action', 'screenshot', 'country'])->setRowId(function ($data) {
                     return $data->id;
                 })
                 ->make(true);

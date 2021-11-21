@@ -47,6 +47,10 @@
                     <th>Remark</th>
                     <th>Worker</th>
                     <th>Screenshot</th>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Link</th>
+                    <th>Text</th>
                     <th>Action</th>
                 </tr>
             </thead>

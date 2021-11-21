@@ -21,5 +21,41 @@ $(document).ready(function(){
         }
         @endforeach 
     })
+
+    $("#openAllWebsite").click(function(){
+        var res = []
+        var data = $("table input:checkbox:checked")
+        
+        data.map(function(){
+            var id = parseInt(this.value)
+            res.push(id)
+        })
+
+        @foreach($job as $jobs)
+        var id = "{{ $jobs['id'] }}"
+
+        if(jQuery.inArray( parseInt(id), res) !== -1){
+            var windowPopup = window.open("{{ $jobs['company_website'] }}", '_blank');
+        }
+        @endforeach 
+    })
+
+    $("#openAllScreenshot").click(function(){
+        var res = []
+        var data = $("table input:checkbox:checked")
+        
+        data.map(function(){
+            var id = parseInt(this.value)
+            res.push(id)
+        })
+
+        @foreach($job as $jobs)
+        var id = "{{ $jobs['id'] }}"
+
+        if(jQuery.inArray( parseInt(id), res) !== -1){
+            var windowPopup = window.open("{{asset($jobs['screenshot_url'])}}", '_blank');
+        }
+        @endforeach 
+    })
 })
 </script>

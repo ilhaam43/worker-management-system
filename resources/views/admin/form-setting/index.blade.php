@@ -39,6 +39,7 @@
                             <option value="1" {{ ( $formSetting->website == 1) ? 'selected' : '' }}>Yes</option>
                             <option value="0" {{ ( $formSetting->website == 0) ? 'selected' : '' }}>No</option>
                     </select>
+                    <small id="remark-notes" class="form-text text-muted"> Notes : This field have repeated detection </small>
                 </div>
                 <div class="col-sm-4">
                 <label>Email :</label>
@@ -46,6 +47,7 @@
                             <option value="1" {{ ( $formSetting->email == 1) ? 'selected' : '' }}>Yes</option>
                             <option value="0" {{ ( $formSetting->email == 0) ? 'selected' : '' }}>No</option>
                     </select>
+                    <small id="remark-notes" class="form-text text-muted"> Notes : This field have repeated detection </small>
                 </div>
                 <div class="col-sm-4">
                 <label>Country :</label>
@@ -77,6 +79,7 @@
                                 <option value="1" {{ ( $formSetting->name == 1) ? 'selected' : '' }}>Yes</option>
                                 <option value="0" {{ ( $formSetting->name == 0) ? 'selected' : '' }}>No</option>
                         </select>
+                        <small id="remark-notes" class="form-text text-muted"> Notes : This field have repeated detection </small>
                 </div>
             </div>
             </br>
@@ -87,6 +90,7 @@
                                 <option value="1" {{ ( $formSetting->number == 1) ? 'selected' : '' }}>Yes</option>
                                 <option value="0" {{ ( $formSetting->number == 0) ? 'selected' : '' }}>No</option>
                         </select>
+                        <small id="remark-notes" class="form-text text-muted"> Notes : This field have repeated detection </small>
                 </div>
                 <div class="col-sm-4">
                     <label>Link :</label>
@@ -94,6 +98,7 @@
                                 <option value="1" {{ ( $formSetting->link == 1) ? 'selected' : '' }}>Yes</option>
                                 <option value="0" {{ ( $formSetting->link == 0) ? 'selected' : '' }}>No</option>
                         </select>
+                        <small id="remark-notes" class="form-text text-muted"> Notes : This field have repeated detection </small>
                 </div>
                 <div class="col-sm-4">
                     <label>Text :</label>
@@ -101,6 +106,7 @@
                                 <option value="1" {{ ( $formSetting->text == 1) ? 'selected' : '' }}>Yes</option>
                                 <option value="0" {{ ( $formSetting->text == 0) ? 'selected' : '' }}>No</option>
                         </select>
+                        <small id="remark-notes" class="form-text text-muted"> Notes : This field have repeated detection </small>
                 </div>
             </div>
         
